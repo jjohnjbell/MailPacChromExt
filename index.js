@@ -6,10 +6,6 @@ const deleteBtn = document.getElementById("delete-btn")
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 const tabBtn = document.getElementById("tab-btn")
 
-
-const mailPac = fetch("https://aeropost.com/site/en",{mode: "no-cors"})
-onload.console.log(mailPac)
-
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
     render(myLeads)
