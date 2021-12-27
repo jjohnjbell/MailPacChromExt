@@ -1,59 +1,33 @@
 window.onload = () => {
-    let myLeads = []
-    const inputEl = document.getElementById("input-el")
-    const inputBtn = document.getElementById("input-btn")
-    const ulEl = document.getElementById("ul-el")
-    const deleteBtn = document.getElementById("delete-btn")
-    const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-    const tabBtn = document.getElementById("tab-btn")
-    const iframeEl = document.getElementById("iframe-el")
+    let myLinks = []
+    const links = JSON.parse(localStorage.getItem("myLinks"))
+    const results = document.getElementById("results")
+    const getLinksBtn = document.getElementById("myBtn")
+    const deleteBtn = document.getElementById("deleteBtn-El")
 
+    deleteBtn.addEventListener("click",function(){
+        localStorage.clear()
+    })
 
-    if (leadsFromLocalStorage) {
-        myLeads = leadsFromLocalStorage
-        render(myLeads)
+    if (links) {
+        myLinks = links
+        render(myLinks)
     }
 
-    tabBtn.addEventListener("click", function () {
+    getLinksBtn.addEventListener("click", function (e) {
+        e.preventDefault()
+
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            myLeads.push(tabs[0].url)
+            myLinks.push(tabs[0].url)
         })
-        localStorage.setItem("myLeads", JSON.stringify(myLeads))
-        render(myLeads)
-        
-        let frame = document.createElement("iframe")
-        frame.sandbox = "allow-scripts"
-        frame.sandbox = "allow-same-origin"
-        frame.src = "https://aeropost.com/site/en/search?q="
-        frame.srcdoc = "<iframe src= 'https://aeropost.com/site/en/search?q='></iframe>"
-       
-        iframeEl.appendChild(frame)
+        localStorage.setItem("myLinks", JSON.stringify(myLinks))
+        render(myLinks)
     })
 
     function render(leads) {
-        let listItems = ""
+       results.innerHTML = ""
         for (let i = 0; i < leads.length; i++) {
-            listItems += `
-            <li>
-                <a target='_blank' href='${leads[i]}'>
-                    ${leads[i]}
-                </a>
-            </li>
-        `
+               results.innerHTML += `<div class= "well"> ${myLinks[i]} </div>`
         }
-        ulEl.innerHTML = listItems
     }
-
-    deleteBtn.addEventListener("dblclick", function () {
-        localStorage.clear()
-        myLeads = []
-        render(myLeads)
-    })
-
-    inputBtn.addEventListener("click", function () {
-        myLeads.push(inputEl.value)
-        inputEl.value = ""
-        localStorage.setItem("myLeads", JSON.stringify(myLeads))
-        render(myLeads)
-    })
 }
