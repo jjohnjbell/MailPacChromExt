@@ -1,42 +1,43 @@
-window.onload = () => {
-    let myLinks = []
-    let currentHost = ""
-    const links = JSON.parse(localStorage.getItem("myLinks"))
+// window.onload = () => {
+    const links = JSON.parse(localStorage.getItem("myMarks"))
     const results = document.getElementById("results")
     const getLinksBtn = document.getElementById("myBtn")
     const deleteBtn = document.getElementById("deleteBtn-El")
-   
+
+    const bookmarks = {
+        myLinks: [],
+        myHostName:[]
+    }
+
 
     deleteBtn.addEventListener("click",function(){
         localStorage.clear()
     })
 
-    if (links) {
-        myLinks = links
-        render(myLinks)
-    }
+    // if (links) {
+    //     render(links)
+    // }
 
     getLinksBtn.addEventListener("click", function (e) {
         e.preventDefault()
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            myLinks.push(tabs[0].url)
-            currentHost = document.location
-            
-
+            bookmarks.myLinks.push(tabs[0].url)
+            bookmarks.myHostName.push(tabs[0].title)  
+           let newMarks = JSON.parse(localStorage.getItem("myMarks"))
+            localStorage.setItem("myMarks", JSON.stringify(bookmarks))
+            console.log(newMarks)
         })
-        localStorage.setItem("myLinks", JSON.stringify(myLinks))
-        render(myLinks)
+      
+        render(bookmarks)
     })
 
-    function render(leads) {
+    function render(bookmarker) {
        results.innerHTML = ""
-       
-        for (let i = 0; i < leads.length; i++) {
-               results.innerHTML += `<div class= "well"> 
-                                    <h3> ${} 
-                                    <a class="btn btn-default" target="_blank"
-                                    href ="${myLinks[i]}"> Visit </a></h3></div>`
+        for (let i = 0; i < bookmarks.length; i++) {
+               results.innerHTML += `<div><h3> ${bookmarks.myHostName[i]} 
+               <a class="btn btn-default" target="_blank"  href =" ' + ${bookmarks.myLinks[i]} + ' "> Visit </a>
+               </h3></div>`
         }
     }
-}
+//}
