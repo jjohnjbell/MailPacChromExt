@@ -2,12 +2,15 @@
 const resultsEl = document.getElementById("results")
 const getLinksBtn = document.getElementById("myBtn")
 const deleteBtn = document.getElementById("deleteBtn-El")
-let bookmarkObjectArray = []
+let bookmarkObjectArray = [] 
+let onloaderEl = ""
 
 const bookmarks = {
     myLinks: "",
     myHostName: ""
 }
+
+
 
 
 
@@ -42,8 +45,10 @@ getLinksBtn.addEventListener("click", function (e) {
 
 function render(bookmarker) {
     for (let i = 0; i < bookmarker.length; i++) {
-        resultsEl.innerHTML += `<h3><div>
+        resultsEl.innerHTML += `<h3><div class="listEl">
                             ${bookmarker[i].myHostName} and ${bookmarker[i].myLinks}
+                            <button class="btn btn-primary">COPY </button>
+                            <button class="btn btn-alert"> Delete </button>
                             </div></h3>`
     }
 }
