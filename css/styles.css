@@ -2,7 +2,9 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    width: 700px;
+    min-width:800px;
+    width: fit-content;
+
     height: fit-content;
   }
   
@@ -67,6 +69,12 @@ body {
 
   .listEl{
     margin-bottom: 15px;
+    margin-top: 30px;
+    font-size: smaller;
+    /* background-color: cornflowerblue; */
+    /* border: 1px solid black;
+    border-radius: 3px; */
+    
   }
   
   /* Responsive: Portrait tablets and up */

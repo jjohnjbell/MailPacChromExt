@@ -43,13 +43,12 @@ getLinksBtn.addEventListener("click", function (e) {
     
 })
 
+// and ${bookmarker[i].myLinks}
 function render(bookmarker) {
     for (let i = 0; i < bookmarker.length; i++) {
-        resultsEl.innerHTML += `<h3><div class="listEl">
-                            ${bookmarker[i].myHostName} and ${bookmarker[i].myLinks}
-                            <button class="btn btn-primary">COPY </button>
-                            <button class="btn btn-alert"> Delete </button>
-                            </div></h3>`
+        resultsEl.innerHTML += `<h5><div class="listEl">
+                            ${bookmarker[i].myHostName}` + ` <a class="" href='${bookmarker[i].myLinks}'>Visit</a>` + `<button class="btn btn-alert"> Delete </button>
+                            </div></h5>`
     }
 }
 
