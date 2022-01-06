@@ -2,14 +2,14 @@
 const resultsEl = document.getElementById("results")
 const getLinksBtn = document.getElementById("myBtn")
 const deleteBtn = document.getElementById("deleteBtn-El")
-const bookmarkObjectArray = []
+let bookmarkObjectArray = []
 
 const bookmarks = {
     myLinks: "",
     myHostName: ""
 }
 
-//render(bookmarks)
+
 
 getLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
@@ -21,28 +21,30 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = tabs[0].title
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
+            render(bookmarkObjectArray)
         })
 
     } else {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
-            bookmarks.myLinks.push(tabs[0].url)
-            bookmarks.myHostName.push(tabs[0].title)
+            bookmarks.myLinks=tabs[0].url
+            bookmarks.myHostName=tabs[0].title
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
+            render(bookmarkObjectArray)
 
         })
 
     }
 
-    render(bookmarkObjectArray)
+    
 })
 
 function render(bookmarker) {
     for (let i = 0; i < bookmarker.length; i++) {
-        resultsEl.innerHTML = `<h3>
-                            ${bookmarks.myLinks[i]} and  ${bookmarks.myHostName[i]}
-                            </h3>`
+        resultsEl.innerHTML += `<h3><div>
+                            ${bookmarker[i].myHostName} and ${bookmarker[i].myLinks}
+                            </div></h3>`
     }
 }
 
