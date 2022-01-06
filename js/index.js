@@ -41,7 +41,7 @@ getLinksBtn.addEventListener("click", function (e) {
 function render(bookmarker) {
     for (let i = 0; i < bookmarker.length; i++) {
         resultsEl.innerHTML = `<h3>
-                            ${bookmarkObjectArray[i]}
+                            ${bookmarks.myLinks[i]} and  ${bookmarks.myHostName[i]}
                             </h3>`
     }
 }
