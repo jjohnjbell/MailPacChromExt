@@ -1,6 +1,6 @@
 // window.onload = () => {
 const resultsEl = document.getElementById("results")
-const getLinksBtn = document.getElementById("myBtn")
+const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
 let storageContent = JSON.parse(localStorage.getItem("myMarks"))
@@ -13,9 +13,9 @@ const bookmarks = {
 }
 
 
-if ( storageContent!= null) {
-    render(storageContent)
-}
+// if ( storageContent!= null) {
+//     render(storageContent)
+// }
 
 
 getLinksBtn.addEventListener("click", function (e) {
@@ -29,7 +29,14 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-            render(bookmarkObjectArray)
+           
+           // render(bookmarkObjectArray)
+            function shower(){
+                resultsEl.innerHTML="GRABBED"
+            }
+           setTimeout(function(){
+            shower().fadeOut()
+        }, 3000) // time in millisecond for as long as you like
 
         })
 
@@ -41,8 +48,12 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-            render(bookmarkObjectArray)
-
+            function shower(){
+                resultsEl.innerHTML="GRABBED"
+            }
+           setTimeout(function(){
+            shower().fadeOut()
+        }, 3000) // time in millisecond for as long as you like
 
         })
 
