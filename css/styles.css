@@ -1,10 +1,14 @@
 /* Space out content a bit */
 body {
     padding-top: 20px;
-    padding-bottom: 20px;
-    width:500px;
-    height: fit-content;
+    padding-bottom: 20px; 
+    min-width:800px;
+    width: fit-content;
+    height: 40px;
+   height: fit-content;
   }
+
+  
   
   /* Everything but the jumbotron gets side spacing for mobile first views */
   .header,
@@ -40,6 +44,7 @@ body {
   @media (min-width: 768px) {
     .container {
       max-width: 730px;
+      
     }
   }
   .container-narrow > hr {
@@ -63,6 +68,16 @@ body {
   }
   .marketing p + h4 {
     margin-top: 28px;
+  }
+
+  .listEl{
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-size: smaller;
+    /* background-color: cornflowerblue; */
+    /* border: 1px solid black;
+    border-radius: 3px; */
+    
   }
   
   /* Responsive: Portrait tablets and up */

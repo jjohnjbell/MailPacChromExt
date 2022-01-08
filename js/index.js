@@ -1,43 +1,72 @@
 // window.onload = () => {
-    const links = JSON.parse(localStorage.getItem("myMarks"))
-    const results = document.getElementById("results")
-    const getLinksBtn = document.getElementById("myBtn")
-    const deleteBtn = document.getElementById("deleteBtn-El")
+const resultsEl = document.getElementById("results")
+const getLinksBtn = document.getElementById("myBtn")
+const deleteBtn = document.getElementById("deleteBtn-El")
+const showLinksBtn = document.getElementById("showLinks-El")
+let storageContent = JSON.parse(localStorage.getItem("myMarks"))
+let bookmarkObjectArray = []
+let onloaderEl = ""
 
-    const bookmarks = {
-        myLinks: [],
-        myHostName:[]
-    }
+const bookmarks = {
+    myLinks: "",
+    myHostName: ""
+}
 
 
-    deleteBtn.addEventListener("click",function(){
-        localStorage.clear()
-    })
+if ( storageContent!= null) {
+    render(storageContent)
+}
 
-    // if (links) {
-    //     render(links)
-    // }
 
-    getLinksBtn.addEventListener("click", function (e) {
-        e.preventDefault()
+getLinksBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+
+    if (localStorage.getItem('myMarks') === null) {
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            bookmarks.myLinks.push(tabs[0].url)
-            bookmarks.myHostName.push(tabs[0].title)  
-           let newMarks = JSON.parse(localStorage.getItem("myMarks"))
-            localStorage.setItem("myMarks", JSON.stringify(bookmarks))
-            console.log(newMarks)
-        })
-      
-        render(bookmarks)
-    })
+            let url = new URL(tabs[0].url)
+            bookmarks.myLinks = tabs[0].url
+            bookmarks.myHostName = url.hostname
+            bookmarkObjectArray.push(bookmarks)
+            localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
+            render(bookmarkObjectArray)
 
-    function render(bookmarker) {
-       results.innerHTML = ""
-        for (let i = 0; i < bookmarks.length; i++) {
-               results.innerHTML += `<div><h3> ${bookmarks.myHostName[i]} 
-               <a class="btn btn-default" target="_blank"  href =" ' + ${bookmarks.myLinks[i]} + ' "> Visit </a>
-               </h3></div>`
-        }
+        })
+
+    } else {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let url = new URL(tabs[0].url)
+            bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
+            bookmarks.myLinks = tabs[0].url
+            bookmarks.myHostName = url.hostname
+            bookmarkObjectArray.push(bookmarks)
+            localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
+            render(bookmarkObjectArray)
+
+
+        })
+
     }
+
+
+})
+
+
+
+function render(bookmarker) {
+    for (let i = 0; i < bookmarker.length; i++) {
+        resultsEl.innerHTML += `<h5><div class="listEl">
+                            ${bookmarker[i].myHostName}` + ` <a href="${bookmarker[i].myLinks}" target = "_blank">Visit</a> ` +
+            `<button id="copy-El" class="btn-secondary"> COPY</button>` + `<button id = "deleteURL" class="btn btn-alert"> Delete </button>
+                            </div></h5>`
+
+    }
+
+}
+
+
+
+deleteBtn.addEventListener("click", function () {
+    localStorage.clear()
+})
 //}
