@@ -18,6 +18,7 @@ const bookmarks = {
 // }
 
 
+
 getLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
@@ -30,13 +31,11 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
            
-           // render(bookmarkObjectArray)
-            function shower(){
-                resultsEl.innerHTML="GRABBED"
-            }
-           setTimeout(function(){
-            shower().fadeOut()
-        }, 3000) // time in millisecond for as long as you like
+         
+            resultsEl.innerHTML="<h1>Link Stored</h1>"
+         
+           
+            setTimeout(()=> resultsEl.remove(),1200)
 
         })
 
@@ -48,12 +47,11 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-            function shower(){
-                resultsEl.innerHTML="GRABBED"
-            }
-           setTimeout(function(){
-            shower().fadeOut()
-        }, 3000) // time in millisecond for as long as you like
+            resultsEl.innerHTML="<h1>Link Stored</h1>"
+           
+   
+           
+           setTimeout(()=> resultsEl.remove(),1200)
 
         })
 
@@ -62,7 +60,7 @@ getLinksBtn.addEventListener("click", function (e) {
 
 })
 
-
+showLinksBtn.addEventListener("click", render(storageContent))
 
 function render(bookmarker) {
     for (let i = 0; i < bookmarker.length; i++) {
