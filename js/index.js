@@ -13,9 +13,7 @@ const bookmarks = {
 }
 
 
-// if ( storageContent!= null) {
-//     render(storageContent)
-// }
+
 
 
 
@@ -23,19 +21,19 @@ getLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
     if (localStorage.getItem('myMarks') === null) {
-
+        
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = new URL(tabs[0].url)
             bookmarks.myLinks = tabs[0].url
             bookmarks.myHostName = url.hostname
-            bookmarkObjectArray.push(bookmarks)
+           bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
            
          
-            resultsEl.innerHTML="<h1>Link Stored</h1>"
+            // resultsEl.innerHTML="<h1>Link Stored</h1>"
          
            
-            setTimeout(()=> resultsEl.remove(),1200)
+            // setTimeout(()=> resultsEl.remove(),1200)
 
         })
 
@@ -45,13 +43,13 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
             bookmarks.myLinks = tabs[0].url
             bookmarks.myHostName = url.hostname
-            bookmarkObjectArray.push(bookmarks)
+           bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-            resultsEl.innerHTML="<h1>Link Stored</h1>"
+        //     resultsEl.innerHTML="<h1>Link Stored</h1>"
            
    
            
-           setTimeout(()=> resultsEl.remove(),1200)
+        //    setTimeout(()=> resultsEl.remove(),1200)
 
         })
 
@@ -60,14 +58,16 @@ getLinksBtn.addEventListener("click", function (e) {
 
 })
 
-showLinksBtn.addEventListener("click", render(storageContent))
+//
+showLinksBtn.addEventListener("click", renderMyScreen)
 
-function render(bookmarker) {
-    for (let i = 0; i < bookmarker.length; i++) {
-        resultsEl.innerHTML += `<h5><div class="listEl">
-                            ${bookmarker[i].myHostName}` + ` <a href="${bookmarker[i].myLinks}" target = "_blank">Visit</a> ` +
-            `<button id="copy-El" class="btn-secondary"> COPY</button>` + `<button id = "deleteURL" class="btn btn-alert"> Delete </button>
-                            </div></h5>`
+function renderMyScreen(e){
+    e.preventDefault()
+   
+    for (let i = 0; i < bookmarkObjectArray.length; i++) {
+        resultsEl.innerHTML += `<h5><div>
+        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button id="copy-El" class="btn-secondary"> COPY</button> <button id = "deleteURL" class="btn btn-alert"> Delete </button>
+                        </div></h5>`
 
     }
 
