@@ -29,8 +29,15 @@ body {
   }
 
 #popUp{
-   padding-left:40%;
-   font-size: 15px;
+   padding-left:30px;
+   margin-left:40%;
+  height:fit-content;
+  width: fit-content;
+   visibility: hidden;
+   border:1px solid black;
+   font-size:larger;
+   font-size:20px;
+  
   }
 
  #siteLink{
@@ -73,12 +80,11 @@ body {
   .jumbotron {
     border: solid 1px black;
     text-align: center;
-    /* margin-bottom: 20px; */
     border-radius: 10px;
     background-color: #eee;
-    /* padding-bottom: 0px;*/
     padding-bottom: 30px; 
     font-size: 21px;
+    margin-top: 0%;
    
   }
 
