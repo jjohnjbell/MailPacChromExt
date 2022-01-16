@@ -70,7 +70,7 @@ function renderMyScreen(e){
 
     for (let i = 0; i < bookmarkObjectArray.length; i++) {
         resultsEl.innerHTML += `<div id="resultSet">
-        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button class="resultSetBtn" id="copy-El" class="btn-secondary"> COPY</button> <button class="resultSetBtn" id = "deleteURL" class="btn btn-alert"> Delete </button>
+        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button class="resultSetBtn" id="copy-El"> COPY</button> <button class="resultSetBtn" id = "deleteURL"> Delete </button>
                         </di>`
 
     }
