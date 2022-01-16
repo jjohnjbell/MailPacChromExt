@@ -30,7 +30,8 @@ getLinksBtn.addEventListener("click", function (e) {
            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
            
-            popUp.style = "visibility: visible"
+            // popUp.style = "visibility: display"
+            popUp.style = "display:inline"
             popUp.innerHTML="<h1>Link Stored</h1>"
          
            
@@ -46,7 +47,7 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = url.hostname
            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-
+            popUp.style = "display:inline"
             popUp.innerHTML="<h1>Link Stored</h1>"           
            setTimeout(()=> popUp.remove(),1200)
 
