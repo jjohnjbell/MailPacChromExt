@@ -24,9 +24,17 @@ body {
    float: right;
   }
 
-  #resultset{
+  #resultSet{
     background-color: #eee;
-    border-radius: 10px;
+    border-radius: 40px;
+    margin: 10px;
+   align-items: center;
+   padding: 20px;
+   font-size: large;
+  }
+
+  #resultSetBtn{
+    float:right;
   }
   
 
