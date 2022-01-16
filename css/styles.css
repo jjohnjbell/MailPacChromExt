@@ -1,30 +1,30 @@
 /* Space out content a bit */
 body {
+  /* border: solid 1px black;
     padding-top: 20px;
     padding-bottom: 20px; 
     min-width:800px;
     width: fit-content;
     max-height: 200px;
-   height: fit-content;
+   height: fit-content; */
+   height: 300px;
   }
 
   
   
-  /* Everything but the jumbotron gets side spacing for mobile first views */
+  /* Everything but the jumbotron gets side spacing for mobile first views
   .header,
   .marketing,
   .footer {
     padding-right: 15px;
     padding-left: 15px;
-  }
+  } */
 
-  #myBtn {
-    margin-top:20px;
-  }
+ 
   
   /* Custom page header */
   .header {
-    padding-bottom: 20px;
+    padding-bottom: 2px;
     border-bottom: 1px solid #e5e5e5;
   }
 
@@ -45,28 +45,34 @@ body {
   }
   
   /* Custom page footer */
-  .footer {
+  /* .footer {
+ 
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
-  }
+  } */
   
   /* Customize container */
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) { */
+
     .container {
-      max-width: 730px;
-      height:200px
+      /* max-width: 730px; */
+      width: 550px;
+      height:90px
       
     }
-  }
+  /* } */
   .container-narrow > hr {
+  
     margin: 30px 0;
   }
   
   /* Main marketing message and sign up button */
   .jumbotron {
+    border: solid 1px black;
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
   }
   .jumbotron .btn {
     padding: 14px 24px;
@@ -92,7 +98,7 @@ body {
     
   }
   
-  /* Responsive: Portrait tablets and up */
+  /* Responsive: Portrait tablets and up
   @media screen and (min-width: 768px) {
     /* Remove the padding we set earlier */
     .header,
@@ -102,7 +108,7 @@ body {
       padding-left: 0;
     }
     .header {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
 
     label{
@@ -113,10 +119,10 @@ body {
       margin: 15px;
     }
     .jumbotron {
-        padding:60px;
+      padding-bottom: -20px;     
       border-bottom: 0;
       background-color: #eee;
       border-radius: 10px;
       
     }
-  }
+  } 
