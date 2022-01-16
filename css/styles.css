@@ -21,7 +21,12 @@ body {
   } */
 
   .footer{
-   margin-left: 17  0px;
+   float: right;
+  }
+
+  #resultset{
+    background-color: #eee;
+    border-radius: 10px;
   }
   
 
