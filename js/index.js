@@ -35,7 +35,7 @@ getLinksBtn.addEventListener("click", function (e) {
            
          
            
-             setTimeout(()=> popUp.remove(),1200)
+             setTimeout(()=> popUp.style="visibility:hidden",1200)
 
         })
 
@@ -49,7 +49,7 @@ getLinksBtn.addEventListener("click", function (e) {
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
             popUp.style = "visibility:visible"
                      
-         setTimeout(()=> popUp.remove(),1200)
+         setTimeout(()=> popUp.style="visibility:hidden",1200)
 
         })
 
