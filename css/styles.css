@@ -28,17 +28,16 @@ body {
     border-bottom: 1px solid #e5e5e5;
   }
 
-#pupUp{
-    font-size: 10px;
-    color:red;
-    
+#popUp{
+   padding-left:40%;
+   font-size: 15px;
   }
 
-  span{
-    margin-left: 35%;
-    width: fit-content;
-    height: fit-content;
-    display:none;
+ #siteLink{
+  margin:0px;
+  float:right;
+
+    
   }
 
   .header h3 {
@@ -77,8 +76,8 @@ body {
     /* margin-bottom: 20px; */
     border-radius: 10px;
     background-color: #eee;
-    padding-bottom: 0px;
-    padding-top: 30px;
+    /* padding-bottom: 0px;*/
+    padding-bottom: 30px; 
     font-size: 21px;
    
   }
@@ -94,9 +93,6 @@ body {
     padding-left: 10%
   }
 
-  #siteLink{
-    float:right;
-  }
   
   
   /* Supporting marketing content */

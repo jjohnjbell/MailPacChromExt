@@ -32,7 +32,7 @@ getLinksBtn.addEventListener("click", function (e) {
            
             // popUp.style = "visibility: display"
             popUp.style = "display:inline"
-            popUp.innerHTML="<h1>Link Stored</h1>"
+            popUp.innerHTML="Link Grabbed"
          
            
             setTimeout(()=> popUp.remove(),1200)
