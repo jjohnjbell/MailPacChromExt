@@ -1,5 +1,6 @@
 // window.onload = () => {
 const resultsEl = document.getElementById("results")
+const popUp = document.getElementById("popUp")
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
@@ -29,11 +30,11 @@ getLinksBtn.addEventListener("click", function (e) {
            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
            
-         
-            // resultsEl.innerHTML="<h1>Link Stored</h1>"
+            popUp.style = "visibility: visible"
+            popUp.innerHTML="<h1>Link Stored</h1>"
          
            
-            // setTimeout(()=> resultsEl.remove(),1200)
+            setTimeout(()=> popUp.remove(),1200)
 
         })
 
@@ -45,11 +46,9 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.myHostName = url.hostname
            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-        //     resultsEl.innerHTML="<h1>Link Stored</h1>"
-           
-   
-           
-        //    setTimeout(()=> resultsEl.remove(),1200)
+
+            popUp.innerHTML="<h1>Link Stored</h1>"           
+           setTimeout(()=> popUp.remove(),1200)
 
         })
 
@@ -64,13 +63,17 @@ showLinksBtn.addEventListener("click", renderMyScreen)
 function renderMyScreen(e){
     e.preventDefault()
    
+    if (resultsEl.innerHTML != ""){
+
+    }else {
+
     for (let i = 0; i < bookmarkObjectArray.length; i++) {
         resultsEl.innerHTML += `<h5><div>
         ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button id="copy-El" class="btn-secondary"> COPY</button> <button id = "deleteURL" class="btn btn-alert"> Delete </button>
                         </div></h5>`
 
     }
-
+    }
 }
 
 

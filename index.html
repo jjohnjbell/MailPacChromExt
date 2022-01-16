@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' "> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' "> -->
 
 
 
@@ -16,6 +16,7 @@
 
 
     <link rel="stylesheet" href="/css/anotherCSS.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
     <link href="/css/styles.css" rel="stylesheet">
@@ -33,40 +34,43 @@
 
         <div class="jumbotron">
 
+
+
             <h2>Click and Collect your URLs! </h2>
             <p class="text-muted">Check price of each link <a href="https://aeropost.com/site/en?gtw=KIN"
                     target="_blank">here</a></p>
-                   
+
+            <div id="popUp" ></div>
 
             <form id="myForm">
 
                 <div class="formGroup">
                     <button id="myBtn-El" class="btn"> GRAB LINK </button>
                     <button id="deleteBtn-El" class="btn"> Delete All</button>
-                    <button id="showLinks-El" class="btn" > Show Links</button>
+                    <button id="showLinks-El" class="btn"> Show Links</button>
                 </div>
             </form>
 
-        
 
-        <div class="row marketing">
-            <div class="col-lg-12">
-                <div id="results"></div>
+
+            <div class="row marketing">
+                <div class="col-lg-12">
+                    <div id="results"></div>
+                </div>
             </div>
+
+
+
+            <footer class="footer">
+                <p>&copy; 2021 December MailPac Changes</p>
+            </footer>
+
         </div>
 
-        
+        <script src="/js/jqueryStuff.js"></script>
 
-        <footer class="footer">
-            <p>&copy; 2021 December MailPac Changes</p>
-        </footer>
-
-    </div>
-
-    <script src="/js/jqueryStuff.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/index.js"></script>
 </body>
 
 </html>
