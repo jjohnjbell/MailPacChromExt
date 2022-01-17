@@ -13,7 +13,7 @@ const bookmarks = {
     myHostName: ""
 }
 
-if (storageContent === null){
+if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
 
@@ -24,21 +24,21 @@ getLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
     if (localStorage.getItem('myMarks') === null) {
-        
+
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = new URL(tabs[0].url)
             bookmarks.myLinks = tabs[0].url
             bookmarks.myHostName = url.hostname
-           bookmarkObjectArray.push(bookmarks)
+            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-           
+
             // popUp.style = "visibility: display"
             popUp.style = "visibility:visible"
-           
-         
-           
-             setTimeout(()=> popUp.style="visibility:hidden",1200)
-             showLinksBtn.style="display=visible"
+
+
+
+            setTimeout(() => popUp.style = "visibility:hidden", 1200)
+            showLinksBtn.style = "display=visible"
 
         })
 
@@ -48,13 +48,13 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
             bookmarks.myLinks = tabs[0].url
             bookmarks.myHostName = url.hostname
-           bookmarkObjectArray.push(bookmarks)
+            bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
             popUp.style = "visibility:visible"
-                     
-         setTimeout(()=> popUp.style="visibility:hidden",1200)
 
-         showLinksBtn.style="display=visible"
+            setTimeout(() => popUp.style = "visibility:hidden", 1200)
+
+            showLinksBtn.style = "display=visible"
 
         })
 
@@ -66,19 +66,22 @@ getLinksBtn.addEventListener("click", function (e) {
 //
 showLinksBtn.addEventListener("click", renderMyScreen)
 
-function renderMyScreen(e){
+function renderMyScreen(e) {
     e.preventDefault()
-   
-    if (resultsEl.innerHTML != ""){
 
-    }else {
+    if (resultsEl.innerHTML != "") {
 
-    for (let i = 0; i < bookmarkObjectArray.length; i++) {
-        resultsEl.innerHTML += `<div id="resultSetDiv">
-        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button class="resultSetBtn" id="copy-El"> Copy</button> <button class="resultSetBtn" id = "deleteURL"> Delete </button>
+    } else {
+
+        for (let i = 0; i < bookmarkObjectArray.length; i++) {
+            resultsEl.innerHTML += `<div id="resultSetDiv">
+        <a href="${bookmarkObjectArray[i].myLinks}" 
+        target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
+        <button class="resultSetBtn" id="copy-El"> Copy</button> 
+        <button class="resultSetBtn" id = "deleteURL"> Delete </button>
                         </di>`
 
-    }
+        }
     }
 }
 
