@@ -72,19 +72,38 @@ function renderMyScreen(e) {
     if (resultsEl.innerHTML != "") {
 
     } else {
-
+       
         for (let i = 0; i < bookmarkObjectArray.length; i++) {
-            resultsEl.innerHTML += `<div id="resultSetDiv">
-        <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
-        <button class="resultSetBtn" id="copy-El"> Copy</button> 
-        <button class="resultSetBtn" id = "deleteURL"> Delete </button>
-                        </di>`
+
+            let copyBtn = document.createElement('button')
+            copyBtn.className = "resultSetBtn"
+            copyBtn.innerHTML = "Copy"
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.className = "resultSetBtn"
+            deleteBtn.innerHTML = "Delete"
+
+            let newDiv = document.createElement('div')
+            newDiv.id = "resultSetDiv"
+           
+            newDiv.appendChild(copyBtn)
+            newDiv.appendChild(deleteBtn)
+
+            resultsEl.appendChild(newDiv)
+    
+            //     resultsEl.innerHTML += `<div id="resultSetDiv">
+            // <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
+            // <button class="resultSetBtn" > Copy</button> 
+            // <button class="resultSetBtn" > Delete </button>
+            //                 </di>`
 
         }
     }
 }
 
-
+function clearChild() {
+    document.getElementById("resultSetDiv").remove()
+}
 
 deleteBtn.addEventListener("click", function () {
     localStorage.clear()

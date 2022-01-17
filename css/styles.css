@@ -51,17 +51,20 @@ body {
   }
 
   #resultSetDiv{
-    background-color: #eee;
+    background-color: #eee; 
     border-radius: 40px;
     margin: 10px;
    align-items: center;
-   padding: 15px;
+   padding: 20px;
    font-size: large;
+   
+   
   }
 
   .resultSetBtn{
     float:right;
     margin-right: 5px;
+    margin-top:-10px;
   }
   
 
