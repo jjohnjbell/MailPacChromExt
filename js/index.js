@@ -85,9 +85,10 @@ function renderMyScreen(e) {
 
             let newDiv = document.createElement('div')
             newDiv.id = "resultSetDiv"
+            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a>`
            
-            newDiv.appendChild(copyBtn)
             newDiv.appendChild(deleteBtn)
+            newDiv.appendChild(copyBtn)
 
             resultsEl.appendChild(newDiv)
     
