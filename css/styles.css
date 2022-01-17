@@ -10,6 +10,32 @@ body {
    height: 190px;
   }
 
+  .jumbotron {
+    border: solid 1px black;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #eee;
+    padding:10px; 
+    font-size: 21px;
+    
+   
+  }
+
+  .text-muted {
+    --bs-text-opacity:1;
+    color:#6c757d!important;
+    font-size:24.0957px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  img{
+    padding-left: 10%
+  }
+  
+    .header {
+      margin-bottom: 10px;
+    }
+
   
   
   /* Everything but the jumbotron gets side spacing for mobile first views
@@ -24,17 +50,18 @@ body {
    float: right;
   }
 
-  #resultSet{
+  #resultSetDiv{
     background-color: #eee;
     border-radius: 40px;
     margin: 10px;
    align-items: center;
-   padding: 20px;
+   padding: 15px;
    font-size: large;
   }
 
   .resultSetBtn{
     float:right;
+    margin-right: 5px;
   }
   
 
@@ -97,9 +124,9 @@ body {
   }
 
 
-/* CSS */
+/* STYLED BUTTONS */
 .button-17 {
-  margin-top: 5px;
+  padding-top: 10px;
   opacity: .9;
   align-items: center;
   appearance: none;
@@ -170,73 +197,5 @@ body {
 }
   
   
-  /* Main marketing message and sign up button */
-  .jumbotron {
-    border: solid 1px black;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #eee;
-    padding-bottom: 30px; 
-    font-size: 21px;
-    margin-top: 0%;
-   
-  }
-
-  .text-muted {
-    --bs-text-opacity:1;
-    color:#6c757d!important;
-    font-size:24.0957px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  img{
-    padding-left: 10%
-  }
-
+ 
   
-  
-  /* Supporting marketing content */
-  .marketing {
-    margin: 40px 0;
-  }
-  .marketing p + h4 {
-    margin-top: 28px;
-  }
-
-  .listEl{
-    margin-bottom: 15px;
-    margin-top: 30px;
-    font-size: smaller;
-    /* background-color: cornflowerblue; */
-    /* border: 1px solid black;
-    border-radius: 3px; */
-    
-  }
-  
-  /* Responsive: Portrait tablets and up
-  @media screen and (min-width: 768px) {
-    /* Remove the padding we set earlier */
-    /* .header,
-    .marketing,
-    .footer {
-      padding-right: 0;
-      padding-left: 0;
-    } */
-    .header {
-      margin-bottom: 10px;
-    }
-
-    /* label{
-      margin-top: 10px;
-    } */
-
-    /* .formGroup{
-      margin: 15px;
-    }
-    .jumbotron {    
-      /* border-bottom: 0; */
-      /* background-color: #eee;
-      border-radius: 10px; */
-      
-    /* } */
-  /* }  */

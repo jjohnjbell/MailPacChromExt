@@ -13,7 +13,9 @@ const bookmarks = {
     myHostName: ""
 }
 
-
+if (storageContent === null){
+    showLinksBtn.style = "display:none"
+}
 
 
 
@@ -36,6 +38,7 @@ getLinksBtn.addEventListener("click", function (e) {
          
            
              setTimeout(()=> popUp.style="visibility:hidden",1200)
+             showLinksBtn.style="display=visible"
 
         })
 
@@ -50,6 +53,8 @@ getLinksBtn.addEventListener("click", function (e) {
             popUp.style = "visibility:visible"
                      
          setTimeout(()=> popUp.style="visibility:hidden",1200)
+
+         showLinksBtn.style="display=visible"
 
         })
 
@@ -69,8 +74,8 @@ function renderMyScreen(e){
     }else {
 
     for (let i = 0; i < bookmarkObjectArray.length; i++) {
-        resultsEl.innerHTML += `<div id="resultSet">
-        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button class="resultSetBtn" id="copy-El"> COPY</button> <button class="resultSetBtn" id = "deleteURL"> Delete </button>
+        resultsEl.innerHTML += `<div id="resultSetDiv">
+        ${bookmarkObjectArray[i].myHostName} <a href="${bookmarkObjectArray[i].myLinks}" target = "_blank">Visit</a> <button class="resultSetBtn" id="copy-El"> Copy</button> <button class="resultSetBtn" id = "deleteURL"> Delete </button>
                         </di>`
 
     }
