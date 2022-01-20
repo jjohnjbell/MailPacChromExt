@@ -10,7 +10,8 @@ let onloaderEl = ""
 
 const bookmarks = {
     myLinks: "",
-    myHostName: ""
+    myHostName: "",
+    renderLink:""
 }
 
 if (storageContent === null) {
@@ -26,8 +27,11 @@ getLinksBtn.addEventListener("click", function (e) {
     if (localStorage.getItem('myMarks') === null) {
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            let url = new URL(tabs[0].url)
-            bookmarks.myLinks = tabs[0].url
+            let url = toString(new URL(tabs[0].url))
+            let newUrl = tabs[0].url.substring(0,40) + "..."
+
+            // bookmarks.myLinks = tabs[0].url
+            bookmarks.myLinks = newUrl
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
@@ -44,9 +48,12 @@ getLinksBtn.addEventListener("click", function (e) {
 
     } else {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            let url = new URL(tabs[0].url)
+            let url = toString(new URL(tabs[0].url))
+            let newUrl = tabs[0].url.substring(0,40) + "..."
+
+            // bookmarks.myLinks = tabs[0].url
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
-            bookmarks.myLinks = tabs[0].url
+            bookmarks.myLinks = newUrl
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
@@ -66,7 +73,8 @@ getLinksBtn.addEventListener("click", function (e) {
 //
 showLinksBtn.addEventListener("click", renderMyScreen)
 
-function renderMyScreen(e) {
+function renderMyScreen(e) {+
+    
     e.preventDefault()
 
     if (resultsEl.innerHTML != "") {
@@ -85,7 +93,7 @@ function renderMyScreen(e) {
 
             let newDiv = document.createElement('div')
             newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a>`
+            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
            
             newDiv.appendChild(deleteBtn)
             newDiv.appendChild(copyBtn)
