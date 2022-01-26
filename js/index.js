@@ -8,7 +8,7 @@ const popUp = document.getElementById("popUp")
 
 //Getting Button Elements
 const getLinksBtn = document.getElementById("myBtn-El")
-const deleteBtn = document.getElementById("deleteBtn-El")
+const deleteAllBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
 
 //Storing Local Storage Content
@@ -24,16 +24,23 @@ const bookmarks = {
     trueLink: ""
 }
 
-//Show Links Button is hidden when Local Storage is empty because there is nothing to render
+//showLinksBtn is hidden when Local Storage is empty because there is nothing to render
 if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
 
-
+//Add Click event and getLinks Function to getLinksBtn
 getLinksBtn.addEventListener("click", getLinks)
 
+//Add Click event and showLinks Function to showLinksBtn
 showLinksBtn.addEventListener("click", showLinks)
 
+//Add Click event to deleteAllBtn used to clear Local Storage
+deleteAllBtn.addEventListener("click", function () {
+    localStorage.clear()
+})
+
+//Create getLinks Function
 function getLinks(e) {
     e.preventDefault()
 
@@ -83,6 +90,8 @@ function getLinks(e) {
     }
 }
 
+
+//Create showLinks Function
 function showLinks(e) {
 
     e.preventDefault()
@@ -123,9 +132,9 @@ function showLinks(e) {
    // }
 }
 
-function clearChild() {
+//Create deleteDiv function to add function of deleting div to the deleteBtn
+function deleteDiv() {
     document.getElementById("resultSetDiv").remove()
 }
-deleteBtn.addEventListener("click", function () {
-    localStorage.clear()
-})
+
+
