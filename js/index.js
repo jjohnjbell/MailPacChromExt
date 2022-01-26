@@ -11,7 +11,7 @@ let onloaderEl = ""
 const bookmarks = {
     myLinks: "",
     myHostName: "",
-    renderLink:""
+    trueLink:""
 }
 
 if (storageContent === null) {
@@ -33,6 +33,7 @@ getLinksBtn.addEventListener("click", function (e) {
             // bookmarks.myLinks = tabs[0].url
             bookmarks.myLinks = newUrl
             bookmarks.myHostName = url.hostname
+            bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
@@ -54,6 +55,7 @@ getLinksBtn.addEventListener("click", function (e) {
             // bookmarks.myLinks = tabs[0].url
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
             bookmarks.myLinks = newUrl
+            bookmarks.trueLink = tabs[0].url
             bookmarks.myHostName = url.hostname
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
@@ -70,7 +72,7 @@ getLinksBtn.addEventListener("click", function (e) {
 
 })
 
-//
+
 showLinksBtn.addEventListener("click", renderMyScreen)
 
 function renderMyScreen(e) {+
@@ -86,6 +88,9 @@ function renderMyScreen(e) {+
             let copyBtn = document.createElement('button')
             copyBtn.className = "resultSetBtn"
             copyBtn.innerHTML = "Copy"
+            copyBtn.addEventListener("click",function(){
+                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+            })
 
             let deleteBtn = document.createElement('button')
             deleteBtn.className = "resultSetBtn"
