@@ -1,24 +1,33 @@
 // window.onload = () => {
+
+//Getting Results Div Element
 const resultsEl = document.getElementById("results")
+
+//Getting Pop-Up Div Element
 const popUp = document.getElementById("popUp")
+
+//Getting Button Elements
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
-let storageContent = JSON.parse(localStorage.getItem("myMarks"))
-let bookmarkObjectArray = []
-let onloaderEl = ""
 
+//Storing Local Storage Content
+let storageContent = JSON.parse(localStorage.getItem("myMarks"))
+
+//Creating Array that will store the JSON Parsed Local Storage Content
+let bookmarkObjectArray = []
+
+//Creating Bookmark Object
 const bookmarks = {
     myLinks: "",
     myHostName: "",
     trueLink: ""
 }
 
+//Show Links Button is hidden when Local Storage is empty because there is nothing to render
 if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
-
-
 
 
 getLinksBtn.addEventListener("click", getLinks)
@@ -78,9 +87,9 @@ function showLinks(e) {
 
     e.preventDefault()
 
-    if (resultsEl.innerHTML != "") {
+    // if (resultsEl.innerHTML != "") {
 
-    } else {
+    // } else {
 
         for (let i = 0; i < bookmarkObjectArray.length; i++) {
 
@@ -111,7 +120,7 @@ function showLinks(e) {
             //                 </di>`
 
         }
-    }
+   // }
 }
 
 function clearChild() {
