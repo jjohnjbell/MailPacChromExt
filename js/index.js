@@ -11,7 +11,7 @@ let onloaderEl = ""
 const bookmarks = {
     myLinks: "",
     myHostName: "",
-    trueLink:""
+    trueLink: ""
 }
 
 if (storageContent === null) {
@@ -21,14 +21,18 @@ if (storageContent === null) {
 
 
 
-getLinksBtn.addEventListener("click", function (e) {
+getLinksBtn.addEventListener("click", getLinks)
+
+showLinksBtn.addEventListener("click", showLinks)
+
+function getLinks(e) {
     e.preventDefault()
 
     if (localStorage.getItem('myMarks') === null) {
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = toString(new URL(tabs[0].url))
-            let newUrl = tabs[0].url.substring(0,40) + "..."
+            let newUrl = tabs[0].url.substring(0, 40) + "..."
 
             // bookmarks.myLinks = tabs[0].url
             bookmarks.myLinks = newUrl
@@ -50,7 +54,7 @@ getLinksBtn.addEventListener("click", function (e) {
     } else {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = toString(new URL(tabs[0].url))
-            let newUrl = tabs[0].url.substring(0,40) + "..."
+            let newUrl = tabs[0].url.substring(0, 40) + "..."
 
             // bookmarks.myLinks = tabs[0].url
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
@@ -68,27 +72,22 @@ getLinksBtn.addEventListener("click", function (e) {
         })
 
     }
+}
 
+function showLinks(e) {
 
-})
-
-
-showLinksBtn.addEventListener("click", renderMyScreen)
-
-function renderMyScreen(e) {+
-    
     e.preventDefault()
 
     if (resultsEl.innerHTML != "") {
 
     } else {
-       
+
         for (let i = 0; i < bookmarkObjectArray.length; i++) {
 
             let copyBtn = document.createElement('button')
             copyBtn.className = "resultSetBtn"
             copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click",function(){
+            copyBtn.addEventListener("click", function () {
                 navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
             })
 
@@ -99,12 +98,12 @@ function renderMyScreen(e) {+
             let newDiv = document.createElement('div')
             newDiv.id = "resultSetDiv"
             newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-           
+
             newDiv.appendChild(deleteBtn)
             newDiv.appendChild(copyBtn)
 
             resultsEl.appendChild(newDiv)
-    
+
             //     resultsEl.innerHTML += `<div id="resultSetDiv">
             // <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
             // <button class="resultSetBtn" > Copy</button> 
@@ -118,8 +117,6 @@ function renderMyScreen(e) {+
 function clearChild() {
     document.getElementById("resultSetDiv").remove()
 }
-
 deleteBtn.addEventListener("click", function () {
     localStorage.clear()
 })
-//}
