@@ -21,9 +21,7 @@ if (storageContent === null) {
 }
 
 
-getLinksBtn.addEventListener("click", getLinks)
-
-function getLinks(e) {
+getLinksBtn.addEventListener("click",function (e){
     e.preventDefault()
 
     if (localStorage.getItem('myMarks') === null) {
