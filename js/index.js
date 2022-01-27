@@ -96,31 +96,39 @@ function showLinks(e) {
 
     e.preventDefault()
 
-    // if (resultsEl.innerHTML != "") {
+    if (resultsEl.innerHTML != "") {
 
-    // } else {
+    } else {
+
+
+
+        let copyBtn = document.createElement('button')
+        copyBtn.className = "resultSetBtn"
+        copyBtn.innerHTML = "Copy"
+
+        copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+        })
+
+        let deleteBtn = document.createElement('button')
+        deleteBtn.className = "resultSetBtn"
+        deleteBtn.innerHTML = "Delete"
+
+        deleteBtn.addEventListener("click", deleteDiv)
+
+        let newDiv = document.createElement('div')
 
         for (let i = 0; i < bookmarkObjectArray.length; i++) {
-
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-            })
-
-            let deleteBtn = document.createElement('button')
-            deleteBtn.className = "resultSetBtn"
-            deleteBtn.innerHTML = "Delete"
-
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
             newDiv.appendChild(deleteBtn)
             newDiv.appendChild(copyBtn)
 
             resultsEl.appendChild(newDiv)
+            newDiv.id = "resultSetDiv"
+            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+
+
+
 
             //     resultsEl.innerHTML += `<div id="resultSetDiv">
             // <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
@@ -129,12 +137,10 @@ function showLinks(e) {
             //                 </di>`
 
         }
-   // }
+    }
 }
 
-//Create deleteDiv function to add function of deleting div to the deleteBtn
+//Create deleteDiv function deletes respective result divs via deleteBtn
 function deleteDiv() {
     document.getElementById("resultSetDiv").remove()
 }
-
-
