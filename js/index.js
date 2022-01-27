@@ -21,7 +21,7 @@ if (storageContent === null) {
 }
 
 
-getLinksBtn.addEventListener("click",function (e){
+getLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
     if (localStorage.getItem('myMarks') === null) {
@@ -62,44 +62,44 @@ getLinksBtn.addEventListener("click",function (e){
             showLinksBtn.style = "display=visible"
         })
     }
-    })
+})
 
-    showLinksBtn.addEventListener("click", function (e) {
-        e.preventDefault()
+showLinksBtn.addEventListener("click", function (e) {
+    e.preventDefault()
 
-        //Store LocalStorage Content
-        let lsContent = JSON.parse(localStorage.getItem("myMarks"))
-        for (let i = 0; i < lsContent.length; i++) {
+    //Store LocalStorage Content
+    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+    for (let i = 0; i < lsContent.length; i++) {
 
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(lsContent[i].trueLink)
-            })
+        let copyBtn = document.createElement('button')
+        copyBtn.className = "resultSetBtn"
+        copyBtn.innerHTML = "Copy"
+        copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(lsContent[i].trueLink)
+        })
 
-            let deleteBtn = document.createElement('button')
-            deleteBtn.className = "resultSetBtn"
-            deleteBtn.innerHTML = "Delete"
+        let deleteBtn = document.createElement('button')
+        deleteBtn.className = "resultSetBtn"
+        deleteBtn.innerHTML = "Delete"
 
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
+        let newDiv = document.createElement('div')
+        newDiv.id = "resultSetDiv"
+        newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
 
-            newDiv.appendChild(deleteBtn)
-            newDiv.appendChild(copyBtn)
+        newDiv.appendChild(deleteBtn)
+        newDiv.appendChild(copyBtn)
 
-            resultsEl.appendChild(newDiv)
-            console.log(lsContent[i].myLinks)
+        resultsEl.appendChild(newDiv)
+        console.log(lsContent[i].myLinks)
 
-        }
-
-
-    })
-
-    function clearChild() {
-        document.getElementById("resultSetDiv").remove()
     }
-    deleteBtn.addEventListener("click", function () {
-        localStorage.clear()
-    })
+
+
+})
+
+function clearChild() {
+    document.getElementById("resultSetDiv").remove()
+}
+deleteBtn.addEventListener("click", function () {
+    localStorage.clear()
+})
