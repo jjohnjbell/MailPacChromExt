@@ -21,6 +21,68 @@ if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
 
+// showLinksBtn.addEventListener("click", function (e) {
+//     e.preventDefault()
+//    for (let i = 0; i < bookmarkObjectArray.length; i++) {
+
+//         let copyBtn = document.createElement('button')
+//         copyBtn.className = "resultSetBtn"
+//         copyBtn.innerHTML = "Copy"
+//         copyBtn.addEventListener("click", function () {
+//             navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+//         })
+
+//         let deleteBtn = document.createElement('button')
+//         deleteBtn.className = "resultSetBtn"
+//         deleteBtn.innerHTML = "Delete"
+
+//         let newDiv = document.createElement('div')
+//         newDiv.id = "resultSetDiv"
+//         newDiv.innerHTML += `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+
+//         newDiv.appendChild(deleteBtn)
+//         newDiv.appendChild(copyBtn)
+
+//         resultsEl.appendChild(newDiv)
+
+
+
+//     }
+// })
+
+showLinksBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+
+    //Store LocalStorage Content
+    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+    for (let i = 0; i < lsContent.length; i++) {
+
+        let copyBtn = document.createElement('button')
+        copyBtn.className = "resultSetBtn"
+        copyBtn.innerHTML = "Copy"
+        copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+        })
+
+        let deleteBtn = document.createElement('button')
+        deleteBtn.className = "resultSetBtn"
+        deleteBtn.innerHTML = "Delete"
+
+        let newDiv = document.createElement('div')
+        newDiv.id = "resultSetDiv"
+        newDiv.innerHTML += `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+
+        newDiv.appendChild(deleteBtn)
+        newDiv.appendChild(copyBtn)
+
+        resultsEl.appendChild(newDiv)
+
+    }
+
+    // resultsEl.innerHTML += lsContent[0].myLinks
+    // console.log(lsContent.length)
+})
+
 getLinksBtn.addEventListener("click", getLinks)
 function getLinks(e) {
     e.preventDefault()
@@ -70,48 +132,12 @@ function getLinks(e) {
         })
 
     }
+
+
+    
 }
 
-showLinksBtn.addEventListener("click", showLinks)
-function showLinks(e) {
 
-    e.preventDefault()
-
-    // if (resultsEl.innerHTML != "") {
-
-    // } else {
-
-        for (let i = 0; i < bookmarkObjectArray.length; i++) {
-
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-            })
-
-            let deleteBtn = document.createElement('button')
-            deleteBtn.className = "resultSetBtn"
-            deleteBtn.innerHTML = "Delete"
-
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-
-            newDiv.appendChild(deleteBtn)
-            newDiv.appendChild(copyBtn)
-
-            resultsEl.appendChild(newDiv)
-
-            //     resultsEl.innerHTML += `<div id="resultSetDiv">
-            // <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
-            // <button class="resultSetBtn" > Copy</button> 
-            // <button class="resultSetBtn" > Delete </button>
-            //                 </di>`
-
-        }
-   // }
-}
 
 function clearChild() {
     document.getElementById("resultSetDiv").remove()
