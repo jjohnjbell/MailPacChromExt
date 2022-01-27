@@ -3,11 +3,9 @@
 const resultsEl = document.getElementById("results")
 const popUp = document.getElementById("popUp")
 
-
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
-
 
 let storageContent = JSON.parse(localStorage.getItem("myMarks"))
 let bookmarkObjectArray = []
@@ -24,9 +22,6 @@ if (storageContent === null) {
 }
 
 getLinksBtn.addEventListener("click", getLinks)
-
-showLinksBtn.addEventListener("click", showLinks)
-
 function getLinks(e) {
     e.preventDefault()
 
@@ -67,6 +62,7 @@ function getLinks(e) {
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
             popUp.style = "visibility:visible"
 
+            //Hides Pop-up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
 
             showLinksBtn.style = "display=visible"
@@ -76,6 +72,7 @@ function getLinks(e) {
     }
 }
 
+showLinksBtn.addEventListener("click", showLinks)
 function showLinks(e) {
 
     e.preventDefault()
