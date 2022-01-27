@@ -62,7 +62,7 @@ getLinksBtn.addEventListener("click",function (e){
             showLinksBtn.style = "display=visible"
         })
     }
-    }
+    })
 
     showLinksBtn.addEventListener("click", function (e) {
         e.preventDefault()
