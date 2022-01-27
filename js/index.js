@@ -34,11 +34,13 @@ getLinksBtn.addEventListener("click", function (e) {
     //If Local Storage is empty, Create
     if (localStorage.getItem('myMarks') === null) {
 
+        //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            //Convert URL Object to String to enable the use of the Substring method
             let url = toString(new URL(tabs[0].url))
             let newUrl = tabs[0].url.substring(12, 40) + "..."
 
-
+            //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
@@ -47,24 +49,30 @@ getLinksBtn.addEventListener("click", function (e) {
             // popUp.style = "visibility: display"
             popUp.style = "visibility:visible"
 
+            //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
             showLinksBtn.style = "display=visible"
 
         })
 
     } else {
+         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            //Convert URL Object to String to enable the use of the Substring method
             let url = toString(new URL(tabs[0].url))
             let newUrl = tabs[0].url.substring(12, 40) + "..."
-
+            
+            //Store Local Storage content in Array
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
+
+            //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
             popUp.style = "visibility:visible"
 
-            //Hides Pop-up div after 1200 milliseconds
+             //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
 
             showLinksBtn.style = "display=visible"
