@@ -1,46 +1,32 @@
 // window.onload = () => {
 
-//Getting Results Div Element
 const resultsEl = document.getElementById("results")
-
-//Getting Pop-Up Div Element
 const popUp = document.getElementById("popUp")
 
-//Getting Button Elements
 const getLinksBtn = document.getElementById("myBtn-El")
-const deleteAllBtn = document.getElementById("deleteBtn-El")
+const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
-
-//Storing Local Storage Content
 let storageContent = JSON.parse(localStorage.getItem("myMarks"))
-
-//Creating Array that will store the JSON Parsed Local Storage Content
 let bookmarkObjectArray = []
+let onloaderEl = ""
 
-//Creating Bookmark Object
 const bookmarks = {
     myLinks: "",
     myHostName: "",
     trueLink: ""
 }
 
-//showLinksBtn is hidden when Local Storage is empty because there is nothing to render
 if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
 
-//Add Click event and getLinks Function to getLinksBtn
+
+
+
 getLinksBtn.addEventListener("click", getLinks)
 
-//Add Click event and showLinks Function to showLinksBtn
 showLinksBtn.addEventListener("click", showLinks)
 
-//Add Click event to deleteAllBtn used to clear Local Storage
-deleteAllBtn.addEventListener("click", function () {
-    localStorage.clear()
-})
-
-//Create getLinks Function
 function getLinks(e) {
     e.preventDefault()
 
@@ -90,45 +76,35 @@ function getLinks(e) {
     }
 }
 
-
-//Create showLinks Function
 function showLinks(e) {
 
     e.preventDefault()
 
-    if (resultsEl.innerHTML != "") {
+    // if (resultsEl.innerHTML != "") {
 
-    } else {
-
-
-
-        let copyBtn = document.createElement('button')
-        copyBtn.className = "resultSetBtn"
-        copyBtn.innerHTML = "Copy"
-
-        copyBtn.addEventListener("click", function () {
-            navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-        })
-
-        let deleteBtn = document.createElement('button')
-        deleteBtn.className = "resultSetBtn"
-        deleteBtn.innerHTML = "Delete"
-
-        deleteBtn.addEventListener("click", deleteDiv)
-
-        let newDiv = document.createElement('div')
+    // } else {
 
         for (let i = 0; i < bookmarkObjectArray.length; i++) {
+
+            let copyBtn = document.createElement('button')
+            copyBtn.className = "resultSetBtn"
+            copyBtn.innerHTML = "Copy"
+            copyBtn.addEventListener("click", function () {
+                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+            })
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.className = "resultSetBtn"
+            deleteBtn.innerHTML = "Delete"
+
+            let newDiv = document.createElement('div')
+            newDiv.id = "resultSetDiv"
+            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
             newDiv.appendChild(deleteBtn)
             newDiv.appendChild(copyBtn)
 
             resultsEl.appendChild(newDiv)
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-
-
-
 
             //     resultsEl.innerHTML += `<div id="resultSetDiv">
             // <a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myHostName}</a> 
@@ -137,10 +113,12 @@ function showLinks(e) {
             //                 </di>`
 
         }
-    }
+   // }
 }
 
-//Create deleteDiv function deletes respective result divs via deleteBtn
-function deleteDiv() {
+function clearChild() {
     document.getElementById("resultSetDiv").remove()
 }
+deleteBtn.addEventListener("click", function () {
+    localStorage.clear()
+})
