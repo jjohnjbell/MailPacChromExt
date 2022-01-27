@@ -61,7 +61,7 @@ showLinksBtn.addEventListener("click", function (e) {
         copyBtn.className = "resultSetBtn"
         copyBtn.innerHTML = "Copy"
         copyBtn.addEventListener("click", function () {
-            navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+            navigator.clipboard.writeText(lsContent[i].trueLink)
         })
 
         let deleteBtn = document.createElement('button')
@@ -70,15 +70,16 @@ showLinksBtn.addEventListener("click", function (e) {
 
         let newDiv = document.createElement('div')
         newDiv.id = "resultSetDiv"
-        newDiv.innerHTML += `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+        newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
 
         newDiv.appendChild(deleteBtn)
         newDiv.appendChild(copyBtn)
 
         resultsEl.appendChild(newDiv)
+        console.log(lsContent[i].myLinks)
 
     }
-
+  
     // resultsEl.innerHTML += lsContent[0].myLinks
     // console.log(lsContent.length)
 })
