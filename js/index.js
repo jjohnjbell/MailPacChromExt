@@ -3,9 +3,12 @@
 const resultsEl = document.getElementById("results")
 const popUp = document.getElementById("popUp")
 
+
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
+
+
 let storageContent = JSON.parse(localStorage.getItem("myMarks"))
 let bookmarkObjectArray = []
 let onloaderEl = ""
@@ -20,9 +23,6 @@ if (storageContent === null) {
     showLinksBtn.style = "display:none"
 }
 
-
-
-
 getLinksBtn.addEventListener("click", getLinks)
 
 showLinksBtn.addEventListener("click", showLinks)
@@ -34,7 +34,7 @@ function getLinks(e) {
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = toString(new URL(tabs[0].url))
-            let newUrl = tabs[0].url.substring(0, 40) + "..."
+            let newUrl = tabs[0].url.substring(12, 40) + "..."
 
             // bookmarks.myLinks = tabs[0].url
             bookmarks.myLinks = newUrl
@@ -56,7 +56,7 @@ function getLinks(e) {
     } else {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let url = toString(new URL(tabs[0].url))
-            let newUrl = tabs[0].url.substring(0, 40) + "..."
+            let newUrl = tabs[0].url.substring(12, 40) + "..."
 
             // bookmarks.myLinks = tabs[0].url
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
