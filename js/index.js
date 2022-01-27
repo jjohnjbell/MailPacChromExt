@@ -65,10 +65,13 @@ getLinksBtn.addEventListener("click", function (e) {
 })
 
 showLinksBtn.addEventListener("click", function (e) {
+
+    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+
     e.preventDefault()
 
     //Store LocalStorage Content
-    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+    
     for (let i = 0; i < lsContent.length; i++) {
 
         let copyBtn = document.createElement('button')
