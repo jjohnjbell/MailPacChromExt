@@ -31,13 +31,13 @@ getLinksBtn.addEventListener("click", function (e) {
     //Stop rendering from disappearing immediately
     e.preventDefault()
 
-    //If Local Storage is empty, Create
+    //If Local Storage is empty, Assign Bookmark values and push to Local Storage
     if (localStorage.getItem('myMarks') === null) {
 
         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             //Convert URL Object to String to enable the use of the Substring method
-            let url = toString(new URL(tabs[0].url))
+            // use this to get hostname from URL Object "let url = new URL(tabs[0].url)....url.hostname
             let newUrl = tabs[0].url.substring(12, 40) + "..."
 
             //Assign values to the Bookmark Object
@@ -48,6 +48,7 @@ getLinksBtn.addEventListener("click", function (e) {
 
             // popUp.style = "visibility: display"
             popUp.style = "visibility:visible"
+            
 
             //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
@@ -56,12 +57,14 @@ getLinksBtn.addEventListener("click", function (e) {
         })
 
     } else {
-         //Select current Chrome Tab
+        //Local Storage is not empty so we pull it's content, update it and post back to Local Storage
+
+        //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            //Convert URL Object to String to enable the use of the Substring method
-            let url = toString(new URL(tabs[0].url))
+
+            //Convert URL  to String to enable the use of the Substring method
             let newUrl = tabs[0].url.substring(12, 40) + "..."
-            
+
             //Store Local Storage content in Array
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
 
@@ -72,10 +75,11 @@ getLinksBtn.addEventListener("click", function (e) {
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
             popUp.style = "visibility:visible"
 
-             //Remove Pop Up div after 1200 milliseconds
+            //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
 
             showLinksBtn.style = "display=visible"
+            
         })
     }
 })
@@ -88,7 +92,7 @@ showLinksBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
     //Store LocalStorage Content
-    
+
     for (let i = 0; i < lsContent.length; i++) {
 
         let copyBtn = document.createElement('button')
