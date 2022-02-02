@@ -1,8 +1,8 @@
-window.onload = showLinks
+window.onload = showLinks()
 
 
 //Connect to Div's
-const resultsEl = document.getElementById("results")
+
 const popUp = document.getElementById("popUp")
 
 //Connect to Button Elements
@@ -30,14 +30,15 @@ if (storageContent === null) {
 
 //Create function to Create Bookmark Objects and Store them in Local Storage
 
-getLinksBtn.addEventListener("click", function (e) {
-    
-    //Stop rendering from disappearing immediately
+getLinksBtn.addEventListener("click", getLinks)
+
+//Stop rendering from disappearing immediately
+// e.preventDefault()
+function getLinks(e) {
     e.preventDefault()
 
-
     //If Local Storage is empty, Assign Bookmark values and push to Local Storage
-    if ( storageContent === null) {
+    if (storageContent === null) {
 
         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -52,8 +53,8 @@ getLinksBtn.addEventListener("click", function (e) {
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
             console.log(localStorage.getItem("myMarks"))
-console.log(JSON.parse(localStorage.getItem("myMarks")))
-            
+            console.log(JSON.parse(localStorage.getItem("myMarks")))
+
 
             // popUp.style = "visibility: display"
             popUp.style = "visibility:visible"
@@ -63,8 +64,10 @@ console.log(JSON.parse(localStorage.getItem("myMarks")))
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
             showLinksBtn.style = "display=visible"
 
-           
+            showLinks()
+
         })
+
 
     } else {
         //Local Storage is not empty so we pull it's content, update it and post back to Local Storage
@@ -83,7 +86,7 @@ console.log(JSON.parse(localStorage.getItem("myMarks")))
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-            
+
 
             popUp.style = "visibility:visible"
 
@@ -92,23 +95,24 @@ console.log(JSON.parse(localStorage.getItem("myMarks")))
 
             showLinksBtn.style = "display=visible"
 
-           
+            showLinks()
 
         })
     }
-})
-getLinksBtn.addEventListener("click", showLinks)
+}
+//getLinksBtn.addEventListener("click", showLinks)
 //Create function to Render all links stored in Local Storage
-showLinksBtn.addEventListener("click", showLinks)
+showLinksBtn.addEventListener("click", showLinks())
 
-function showLinks(e) {
+function showLinks() {
+    // e.preventDefault()
+    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+    const resultsEl = document.getElementById("results")
 
-   let lsContent = JSON.parse(localStorage.getItem("myMarks"))
 
-    e.preventDefault()
 
     //Store LocalStorage Content
-    if (lsContent!= null) {
+    if (lsContent != null && resultsEl.innerHTML ==="") {
         for (let i = 0; i < lsContent.length; i++) {
 
             let copyBtn = document.createElement('button')
@@ -138,7 +142,7 @@ function showLinks(e) {
 
 }
 
-///Create function to remove the Div's that store the Result Set
+//Create function to remove the Div's that store the Result Set
 function clearChild() {
     document.getElementById("resultSetDiv").remove()
 }
