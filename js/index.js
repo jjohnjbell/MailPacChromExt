@@ -1,3 +1,6 @@
+window.onload = showLinks
+
+
 //Connect to Div's
 const resultsEl = document.getElementById("results")
 const popUp = document.getElementById("popUp")
@@ -26,13 +29,15 @@ if (storageContent === null) {
 }
 
 //Create function to Create Bookmark Objects and Store them in Local Storage
-getLinksBtn.addEventListener("click", function (e) {
 
+getLinksBtn.addEventListener("click", function (e) {
+    
     //Stop rendering from disappearing immediately
     e.preventDefault()
 
+
     //If Local Storage is empty, Assign Bookmark values and push to Local Storage
-    if (localStorage.getItem('myMarks') === null) {
+    if ( storageContent === null) {
 
         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -46,14 +51,19 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
+            console.log(localStorage.getItem("myMarks"))
+console.log(JSON.parse(localStorage.getItem("myMarks")))
+            
+
             // popUp.style = "visibility: display"
             popUp.style = "visibility:visible"
-            
+
 
             //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
             showLinksBtn.style = "display=visible"
 
+           
         })
 
     } else {
@@ -73,53 +83,60 @@ getLinksBtn.addEventListener("click", function (e) {
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
+            
+
             popUp.style = "visibility:visible"
 
             //Remove Pop Up div after 1200 milliseconds
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
 
             showLinksBtn.style = "display=visible"
-            
+
+           
+
         })
     }
 })
-
+getLinksBtn.addEventListener("click", showLinks)
 //Create function to Render all links stored in Local Storage
-showLinksBtn.addEventListener("click", function (e) {
+showLinksBtn.addEventListener("click", showLinks)
 
-    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
+function showLinks(e) {
+
+   let lsContent = JSON.parse(localStorage.getItem("myMarks"))
 
     e.preventDefault()
 
     //Store LocalStorage Content
+    if (lsContent!= null) {
+        for (let i = 0; i < lsContent.length; i++) {
 
-    for (let i = 0; i < lsContent.length; i++) {
+            let copyBtn = document.createElement('button')
+            copyBtn.className = "resultSetBtn"
+            copyBtn.innerHTML = "Copy"
+            copyBtn.addEventListener("click", function () {
+                navigator.clipboard.writeText(lsContent[i].trueLink)
+            })
 
-        let copyBtn = document.createElement('button')
-        copyBtn.className = "resultSetBtn"
-        copyBtn.innerHTML = "Copy"
-        copyBtn.addEventListener("click", function () {
-            navigator.clipboard.writeText(lsContent[i].trueLink)
-        })
+            let deleteBtn = document.createElement('button')
+            deleteBtn.className = "resultSetBtn"
+            deleteBtn.innerHTML = "Delete"
 
-        let deleteBtn = document.createElement('button')
-        deleteBtn.className = "resultSetBtn"
-        deleteBtn.innerHTML = "Delete"
+            let newDiv = document.createElement('div')
+            newDiv.id = "resultSetDiv"
+            newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
 
-        let newDiv = document.createElement('div')
-        newDiv.id = "resultSetDiv"
-        newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
+            newDiv.appendChild(deleteBtn)
+            newDiv.appendChild(copyBtn)
 
-        newDiv.appendChild(deleteBtn)
-        newDiv.appendChild(copyBtn)
+            resultsEl.appendChild(newDiv)
 
-        resultsEl.appendChild(newDiv)
-        console.log(lsContent[i].myLinks)
 
+        }
     }
 
 
-})
+}
 
 ///Create function to remove the Div's that store the Result Set
 function clearChild() {
