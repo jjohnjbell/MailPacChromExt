@@ -1,7 +1,10 @@
-window.onload = showLinks()
+
+// let resultsEl = document.getElementById("results")
+
 
 
 //Connect to Div's
+let resultsEl = document.getElementById("results")
 
 const popUp = document.getElementById("popUp")
 
@@ -11,7 +14,7 @@ const deleteBtn = document.getElementById("deleteBtn-El")
 const showLinksBtn = document.getElementById("showLinks-El")
 
 //Create Local Storage Variable
-let storageContent = JSON.parse(localStorage.getItem("myMarks"))
+//let storageContent = JSON.parse(localStorage.getItem("myMarks"))
 
 //Create Array in which the Bookmark Objects will be stored to be put in Local Storage
 let bookmarkObjectArray = []
@@ -24,7 +27,7 @@ const bookmarks = {
 }
 
 //Check if Local Storage is empty, if so it hides the Show Links Button
-if (storageContent === null) {
+if (localStorage.getItem("myMarks") === null) {
     showLinksBtn.style = "display:none"
 }
 
@@ -35,10 +38,11 @@ getLinksBtn.addEventListener("click", getLinks)
 //Stop rendering from disappearing immediately
 // e.preventDefault()
 function getLinks(e) {
+   
     e.preventDefault()
-
+    
     //If Local Storage is empty, Assign Bookmark values and push to Local Storage
-    if (storageContent === null) {
+    if (localStorage.getItem("myMarks") === null) {
 
         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -52,8 +56,8 @@ function getLinks(e) {
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
-            console.log(localStorage.getItem("myMarks"))
-            console.log(JSON.parse(localStorage.getItem("myMarks")))
+            // console.log(localStorage.getItem("myMarks"))
+            // console.log(JSON.parse(localStorage.getItem("myMarks")))
 
 
             // popUp.style = "visibility: display"
@@ -65,7 +69,6 @@ function getLinks(e) {
             showLinksBtn.style = "display=visible"
 
             showLinks()
-
         })
 
 
@@ -78,8 +81,12 @@ function getLinks(e) {
             //Convert URL  to String to enable the use of the Substring method
             let newUrl = tabs[0].url.substring(12, 40) + "..."
 
+            //Get content from Local Storage
+            let bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
+
+
             //Store Local Storage content in Array
-            bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
+            // bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
 
             //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
@@ -94,25 +101,20 @@ function getLinks(e) {
             setTimeout(() => popUp.style = "visibility:hidden", 1200)
 
             showLinksBtn.style = "display=visible"
-
             showLinks()
+
+
 
         })
     }
 }
 //getLinksBtn.addEventListener("click", showLinks)
 //Create function to Render all links stored in Local Storage
-showLinksBtn.addEventListener("click", showLinks())
+//showLinksBtn.addEventListener("click", showLinks())
 
 function showLinks() {
-    // e.preventDefault()
     let lsContent = JSON.parse(localStorage.getItem("myMarks"))
-    const resultsEl = document.getElementById("results")
-
-
-
-    //Store LocalStorage Content
-    if (lsContent != null && resultsEl.innerHTML ==="") {
+    if (lsContent != null) {
         for (let i = 0; i < lsContent.length; i++) {
 
             let copyBtn = document.createElement('button')
@@ -137,8 +139,8 @@ function showLinks() {
 
 
         }
-    }
 
+    }
 
 }
 
