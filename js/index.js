@@ -158,5 +158,5 @@ function clearChild() {
 deleteBtn.addEventListener("click", function () {
     localStorage.clear()
     resultsEl.innerHTML = ""
-    hideShowBtn()
+    // hideShowBtn()
 })
