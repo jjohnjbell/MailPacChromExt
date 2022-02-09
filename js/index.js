@@ -1,8 +1,3 @@
-
-// let resultsEl = document.getElementById("results")
-
-
-
 //Connect to Div's
 let resultsEl = document.getElementById("results")
 
@@ -16,9 +11,13 @@ const showLinksBtn = document.getElementById("showLinks-El")
 //Create Local Storage Variable
 //let storageContent = JSON.parse(localStorage.getItem("myMarks"))
 
-//Create Array in which the Bookmark Objects will be stored to be put in Local Storage
-let bookmarkObjectArray = []
-
+//PopUp function
+function popDisplay(text) {
+    popUp.innerHTML = text
+    popUp.style = "visibility:visible"
+    //Remove Pop Up div after 1200 milliseconds
+    setTimeout(() => popUp.style = "visibility:hidden", 1200)
+}
 
 //Create Bookmark Object
 const bookmarks = {
@@ -27,20 +26,21 @@ const bookmarks = {
 }
 
 //Check if Local Storage is empty, if so it hides the Show Links Button
-if (localStorage.getItem("myMarks") === null) {
-    showLinksBtn.style = "display:none"
+hideShowBtn()
+
+function hideShowBtn() {
+    if (localStorage.getItem("myMarks") === null) {
+        showLinksBtn.style = "display:none"
+    }
 }
 
 //Create function to Create Bookmark Objects and Store them in Local Storage
-
 getLinksBtn.addEventListener("click", getLinks)
 
-//Stop rendering from disappearing immediately
 // e.preventDefault()
-function getLinks(e) {
-   
-    e.preventDefault()
-    
+function getLinks() {
+
+    let bookmarkObjectArray = []
     //If Local Storage is empty, Assign Bookmark values and push to Local Storage
     if (localStorage.getItem("myMarks") === null) {
 
@@ -48,7 +48,7 @@ function getLinks(e) {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             //Convert URL Object to String to enable the use of the Substring method
             // use this to get hostname from URL Object "let url = new URL(tabs[0].url)....url.hostname
-            let newUrl = tabs[0].url.substring(12, 40) + "..."
+            let newUrl = tabs[0].url.substring(0, 40) + "..."
 
             //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
@@ -56,100 +56,120 @@ function getLinks(e) {
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
-            // console.log(localStorage.getItem("myMarks"))
-            // console.log(JSON.parse(localStorage.getItem("myMarks")))
-
-
             // popUp.style = "visibility: display"
-            popUp.style = "visibility:visible"
+            popDisplay("Link Grabbed")
 
 
-            //Remove Pop Up div after 1200 milliseconds
-            setTimeout(() => popUp.style = "visibility:hidden", 1200)
+
             showLinksBtn.style = "display=visible"
 
-            showLinks()
+            resultsEl.innerHTML = ""
+
+            //NEW SHOW LINK FUNCTION
+            for (let i = 0; i < bookmarkObjectArray.length; i++) {
+
+                let copyBtn = document.createElement('button')
+                copyBtn.className = "resultSetBtn"
+                copyBtn.innerHTML = "Copy"
+                copyBtn.addEventListener("click", function () {
+                    navigator.clipboard.writeText(lsContent[i].trueLink)
+                })
+
+
+                let newDiv = document.createElement('div')
+                newDiv.id = "resultSetDiv"
+                newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+                newDiv.appendChild(copyBtn)
+
+                resultsEl.appendChild(newDiv)
+            }
+
+
         })
+        //END SHOW LINK FUNCTION
 
 
     } else {
-        //Local Storage is not empty so we pull it's content, update it and post back to Local Storage
-
         //Select current Chrome Tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
             //Convert URL  to String to enable the use of the Substring method
-            let newUrl = tabs[0].url.substring(12, 40) + "..."
+            let actualLink = tabs[0].url
+            let newUrl = tabs[0].url.substring(0, 40) + "..."
+            let bookmarkObjectArray = []
+
 
             //Get content from Local Storage
-            let bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
-
-
-            //Store Local Storage content in Array
-            // bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
-
+            bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
             //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
-
-            popUp.style = "visibility:visible"
-
-            //Remove Pop Up div after 1200 milliseconds
-            setTimeout(() => popUp.style = "visibility:hidden", 1200)
+            popDisplay("Link Grabbed")
 
             showLinksBtn.style = "display=visible"
-            showLinks()
+
+            // for (let i = 0; i < bookmarkObjectArray.length; i++) {
+            //     if ((bookmarkObjectArray[i].trueLink === actualLink)&&(actualLink===tabs[0].url)) {
+            //         popDisplay("Link Already Grabbed")
+
+            //     } else {
 
 
+            //NEW SHOW LINK FUNCTION
+            for (let i = 0; i < bookmarkObjectArray.length; i++) {
+
+
+                let copyBtn = document.createElement('button')
+                copyBtn.className = "resultSetBtn"
+                copyBtn.innerHTML = "Copy"
+                copyBtn.addEventListener("click", function () {
+                    navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+                })
+
+
+                let newDiv = document.createElement('div')
+                newDiv.id = "resultSetDiv"
+                newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+                newDiv.appendChild(copyBtn)
+
+                resultsEl.appendChild(newDiv)
+
+            }
 
         })
-    }
-}
-//getLinksBtn.addEventListener("click", showLinks)
-//Create function to Render all links stored in Local Storage
-//showLinksBtn.addEventListener("click", showLinks())
-
-function showLinks() {
-    let lsContent = JSON.parse(localStorage.getItem("myMarks"))
-    if (lsContent != null) {
-        for (let i = 0; i < lsContent.length; i++) {
-
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(lsContent[i].trueLink)
-            })
-
-            let deleteBtn = document.createElement('button')
-            deleteBtn.className = "resultSetBtn"
-            deleteBtn.innerHTML = "Delete"
-
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML += `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
-
-            newDiv.appendChild(deleteBtn)
-            newDiv.appendChild(copyBtn)
-
-            resultsEl.appendChild(newDiv)
-
-
-        }
 
     }
 
 }
+//END SHOW LINK FUNCTION
+
+
+
+
+
+
+
+
+
 
 //Create function to remove the Div's that store the Result Set
 function clearChild() {
     document.getElementById("resultSetDiv").remove()
 }
 
+
+
+
+
+
+
+
 //Create Function to clear Local Storage
 deleteBtn.addEventListener("click", function () {
     localStorage.clear()
+    resultsEl.innerHTML = ""
+    hideShowBtn()
 })
