@@ -59,11 +59,19 @@ function showLinks() {
             navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
         })
 
+        let delBtn = document.createElement('button')
+        delBtn.className = "resultSetBtn"
+        delBtn.innerHTML = "Delete"
+        delBtn.addEventListener("click", function () {
+            this.parentElement.remove()
+        })
+
 
         let newDiv = document.createElement('div')
         newDiv.id = "resultSetDiv"
         newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
         newDiv.appendChild(copyBtn)
+        newDiv.appendChild(delBtn)
 
         document.getElementById("results").appendChild(newDiv)
 
@@ -102,11 +110,19 @@ function getLinks() {
                     navigator.clipboard.writeText(lsContent[i].trueLink)
                 })
 
+                let delBtn = document.createElement('button')
+                delBtn.className = "resultSetBtn"
+                delBtn.innerHTML = "Delete"
+                delBtn.addEventListener("click", function () {
+                    this.parentElement.remove()
+                })
+
 
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
                 newDiv.appendChild(copyBtn)
+                newDiv.appendChild(delBtn)
 
                 resultsEl.appendChild(newDiv)
             }
@@ -135,11 +151,20 @@ function getLinks() {
                     navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                 })
 
+                let delBtn = document.createElement('button')
+                delBtn.className = "resultSetBtn"
+                delBtn.innerHTML = "Delete"
+                delBtn.addEventListener("click", function () {
+                    this.parentElement.remove()
+                })
 
+
+                
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
                 newDiv.appendChild(copyBtn)
+                newDiv.appendChild(delBtn)
 
                 resultsEl.appendChild(newDiv)
 
