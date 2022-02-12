@@ -64,6 +64,8 @@ function showLinks() {
         delBtn.innerHTML = "Delete"
         delBtn.addEventListener("click", function () {
             this.parentElement.remove()
+        
+
         })
 
 
