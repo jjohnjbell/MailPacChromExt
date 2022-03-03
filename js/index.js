@@ -75,7 +75,7 @@ function getLinks() {
 
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
-                newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+                newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
                 newDiv.appendChild(copyBtn)
                 newDiv.appendChild(delBtn)
 
@@ -88,45 +88,85 @@ function getLinks() {
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
 
             //Assign values to the Bookmark Object
-            bookmarks.myLinks = newUrl
-            bookmarks.trueLink = tabs[0].url
-            bookmarkObjectArray.push(bookmarks)
-            localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
-            popDisplay("Link Grabbed")
-          //  showLinksBtn.style = "display=visible"
+            if (checkDuplicates(bookmarkObjectArray, tabs[0].url)) {
+                //If there exists the current URL in the Local Storage, do nothing except render what's already
+                //in Local Storage to the screen
+                popDisplay("URL Already Saved")
+                for (let i = 0; i < bookmarkObjectArray.length; i++) {
+                    let copyBtn = document.createElement('button')
+                    copyBtn.className = "resultSetBtn"
+                    copyBtn.innerHTML = "Copy"
+                    copyBtn.addEventListener("click", function () {
+                        navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+                    })
 
-            //Render Locasl Storage Items to Screen
-            for (let i = 0; i < bookmarkObjectArray.length; i++) {
-
-                let copyBtn = document.createElement('button')
-                copyBtn.className = "resultSetBtn"
-                copyBtn.innerHTML = "Copy"
-                copyBtn.addEventListener("click", function () {
-                    navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-                })
-
-                let delBtn = document.createElement('button')
-                delBtn.className = "resultSetBtn"
-                delBtn.innerHTML = "Delete"
-                delBtn.addEventListener("click", function () {
-                    this.parentElement.remove()
-                })
+                    let delBtn = document.createElement('button')
+                    delBtn.className = "resultSetBtn"
+                    delBtn.innerHTML = "Delete"
+                    delBtn.addEventListener("click", function () {
+                        this.parentElement.remove()
+                    })
 
 
-                
-                let newDiv = document.createElement('div')
-                newDiv.id = "resultSetDiv"
-                newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-                newDiv.appendChild(copyBtn)
-                newDiv.appendChild(delBtn)
+                    let newDiv = document.createElement('div')
+                    newDiv.id = "resultSetDiv"
+                    newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+                    newDiv.appendChild(copyBtn)
+                    newDiv.appendChild(delBtn)
 
-                resultsEl.appendChild(newDiv)
+                    resultsEl.appendChild(newDiv)
+                }
+            } else {
+                bookmarks.myLinks = newUrl
+                bookmarks.trueLink = tabs[0].url
+                bookmarkObjectArray.push(bookmarks)
+                localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
+                popDisplay("Link Grabbed")
+                //  showLinksBtn.style = "display=visible"
+
+                //Render Locasl Storage Items to Screen
+                for (let i = 0; i < bookmarkObjectArray.length; i++) {
+
+                    let copyBtn = document.createElement('button')
+                    copyBtn.className = "resultSetBtn"
+                    copyBtn.innerHTML = "Copy"
+                    copyBtn.addEventListener("click", function () {
+                        navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+                    })
+
+                    let delBtn = document.createElement('button')
+                    delBtn.className = "resultSetBtn"
+                    delBtn.innerHTML = "Delete"
+                    delBtn.addEventListener("click", function () {
+                        this.parentElement.remove()
+                    })
+
+
+
+                    let newDiv = document.createElement('div')
+                    newDiv.id = "resultSetDiv"
+                    newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+                    newDiv.appendChild(copyBtn)
+                    newDiv.appendChild(delBtn)
+
+                    resultsEl.appendChild(newDiv)
+
+                }
             }
         }
     })
 
+}
+
+function checkDuplicates(array, urlEntry) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].trueLink === urlEntry) {
+            return true
+            break
+        }
+    }
 }
 
 function showLinks() {
@@ -136,36 +176,36 @@ function showLinks() {
     bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
     document.getElementById("results").innerHTML = ""
 
-    if(localStorage.getItem("myMarks") != null){
-    //Render Locasl Storage Items to Screen
-    for (let i = 0; i < bookmarkObjectArray.length; i++) {
+    if (localStorage.getItem("myMarks") != null) {
+        //Render Locasl Storage Items to Screen
+        for (let i = 0; i < bookmarkObjectArray.length; i++) {
 
-        let copyBtn = document.createElement('button')
-        copyBtn.className = "resultSetBtn"
-        copyBtn.innerHTML = "Copy"
-        copyBtn.addEventListener("click", function () {
-            navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-        })
+            let copyBtn = document.createElement('button')
+            copyBtn.className = "resultSetBtn"
+            copyBtn.innerHTML = "Copy"
+            copyBtn.addEventListener("click", function () {
+                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+            })
 
-        let delBtn = document.createElement('button')
-        delBtn.className = "resultSetBtn"
-        delBtn.innerHTML = "Delete"
-        delBtn.addEventListener("click", function () {
-            this.parentElement.remove()
+            let delBtn = document.createElement('button')
+            delBtn.className = "resultSetBtn"
+            delBtn.innerHTML = "Delete"
+            delBtn.addEventListener("click", function () {
+                this.parentElement.remove()
 
-        })
+            })
 
 
-        let newDiv = document.createElement('div')
-        newDiv.id = "resultSetDiv"
-        newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-        newDiv.appendChild(copyBtn)
-        newDiv.appendChild(delBtn)
+            let newDiv = document.createElement('div')
+            newDiv.id = "resultSetDiv"
+            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
+            newDiv.appendChild(copyBtn)
+            newDiv.appendChild(delBtn)
 
-        document.getElementById("results").appendChild(newDiv)
+            document.getElementById("results").appendChild(newDiv)
 
+        }
     }
-}
 }
 
 //Create function to remove the Div's that store the Result Set
