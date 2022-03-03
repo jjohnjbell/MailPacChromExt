@@ -92,7 +92,7 @@ function getLinks() {
             if (checkDuplicates(bookmarkObjectArray, tabs[0].url)) {
                 //If there exists the current URL in the Local Storage, do nothing except render what's already
                 //in Local Storage to the screen
-                popDisplay("URL Already Saved")
+                popDisplay("URL "+tabs[0].url.substring(0,15) +"... already saved")
                 for (let i = 0; i < bookmarkObjectArray.length; i++) {
                     let copyBtn = document.createElement('button')
                     copyBtn.className = "resultSetBtn"
