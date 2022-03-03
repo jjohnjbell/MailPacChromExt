@@ -9,7 +9,7 @@ let popUp2 = document.getElementById("popUp2")
 //Connect to Button Elements
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
-const testArray = []
+//const testArray = []
 //const showLinksBtn = document.getElementById("showLinks-El")
 
 
