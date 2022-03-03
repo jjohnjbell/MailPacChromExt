@@ -82,7 +82,7 @@ body {
    margin-left:34%;
   height:fit-content;
   width: fit-content;
-   visibility: hidden;
+   /* visibility: hidden;*/
    font-size:larger;
    font-size:20px;
 
