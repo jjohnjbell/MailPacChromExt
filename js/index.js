@@ -15,19 +15,6 @@ const testArray = []
 
 // //populate local storage
 
-// testArray.push(testObject1,testObject2,testObject3,testObject4,testObject5,testObject6)
-// localStorage.setItem("testing", JSON.stringify(testArray))
-
-// let localStoreContent = JSON.parse(localStorage.getItem("testing"))
-
-// for (let i = 0; i < localStoreContent.length; i++) {
-//     popUp2.innerHTML += localStoreContent[i].number + "<br>"
-// }
-
-
-
-
-
 //PopUp function
 function popDisplay(text) {
     popUp.innerHTML = text
