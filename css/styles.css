@@ -78,17 +78,14 @@ body {
   }
 
 #popUp{
-   padding-left:30px;
-   margin-left:34%;
   height:fit-content;
   width: fit-content;
    /* visibility: hidden;*/
    font-size:larger;
-   font-size:20px;
+    font-size:20px;  
+margin-left: 40%;
 
-
-   
-  
+    
   }
 
  #siteLink{
