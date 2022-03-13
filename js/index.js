@@ -1,4 +1,4 @@
-//window.onload = showLinks()
+window.onload = showLinks()
 
 //Connect to Div's
 let resultsEl = document.getElementById("results")
@@ -39,7 +39,7 @@ function getLinks() {
     //Select current Chrome Tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let bookmarkObjectArray = []
-        let newUrl = tabs[0].url.substring(0, 40) + "..."
+        let newUrl = tabs[0].url.substring(0, 30) + "..."
 
         //If Local Storage is empty, Assign Bookmark values and push to Local Storage
         if (localStorage.getItem("myMarks") === null) {
@@ -70,6 +70,7 @@ function getLinks() {
                 delBtn.innerHTML = "Delete"
                 delBtn.addEventListener("click", function () {
                     this.parentElement.remove()
+                    deleteSpecificItem(lsContent,lsContent[i])
                 })
 
 
@@ -106,6 +107,7 @@ function getLinks() {
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
+                        deleteSpecificItem(bookmarkObjectArray,bookmarkObjectArray[i])
                     })
 
 
@@ -141,6 +143,7 @@ function getLinks() {
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
+                        deleteSpecificItem(bookmarkObjectArray,bookmarkObjectArray[i])
                     })
 
 
@@ -165,6 +168,43 @@ function checkDuplicates(array, urlEntry) {
         if (array[i].trueLink === urlEntry) {
             return true
             break
+        }
+    }
+}
+
+//Remove specific item from Local Storage
+function deleteSpecificItem(localStorageArray, objectKeyPair) {
+    let indexItem = localStorageArray.indexOf(objectKeyPair)
+    if (indexItem > -1) {
+        localStorageArray.splice(indexItem, 1)
+        localStorage.clear()
+        resultsEl.innerHTML = ""
+        localStorage.setItem("myMarks", JSON.stringify(localStorageArray))
+
+        for (let i = 0; i < localStorageArray.length; i++) {
+            let copyBtn = document.createElement('button')
+            copyBtn.className = "resultSetBtn"
+            copyBtn.innerHTML = "Copy"
+            copyBtn.addEventListener("click", function () {
+                navigator.clipboard.writeText(localStorageArray[i].trueLink)
+            })
+
+            let delBtn = document.createElement('button')
+            delBtn.className = "resultSetBtn"
+            delBtn.innerHTML = "Delete"
+            delBtn.addEventListener("click", function () {
+                this.parentElement.remove()
+            })
+
+
+            let newDiv = document.createElement('div')
+            newDiv.id = "resultSetDiv"
+            newDiv.innerHTML = `<a href="${localStorageArray[i].myLinks}"target = "_blank">${localStorageArray[i].myLinks}</a>`
+            newDiv.appendChild(copyBtn)
+            newDiv.appendChild(delBtn)
+
+            resultsEl.appendChild(newDiv)
+
         }
     }
 }
@@ -218,5 +258,4 @@ deleteBtn.addEventListener("click", function () {
     localStorage.clear()
     resultsEl.innerHTML = ""
 })
-
 
