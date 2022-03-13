@@ -33,7 +33,6 @@ const bookmarks = {
 getLinksBtn.addEventListener("click", getLinks)
 
 
-
 function getLinks() {
 
     //Select current Chrome Tab
@@ -70,7 +69,7 @@ function getLinks() {
                 delBtn.innerHTML = "Delete"
                 delBtn.addEventListener("click", function () {
                     this.parentElement.remove()
-                    deleteSpecificItem(lsContent,lsContent[i])
+                    deleteSpecificItem(lsContent, lsContent[i])
                 })
 
 
@@ -107,7 +106,7 @@ function getLinks() {
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray,bookmarkObjectArray[i])
+                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                     })
 
 
@@ -143,7 +142,7 @@ function getLinks() {
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray,bookmarkObjectArray[i])
+                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                     })
 
 
@@ -180,32 +179,8 @@ function deleteSpecificItem(localStorageArray, objectKeyPair) {
         localStorage.clear()
         resultsEl.innerHTML = ""
         localStorage.setItem("myMarks", JSON.stringify(localStorageArray))
-
-        for (let i = 0; i < localStorageArray.length; i++) {
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(localStorageArray[i].trueLink)
-            })
-
-            let delBtn = document.createElement('button')
-            delBtn.className = "resultSetBtn"
-            delBtn.innerHTML = "Delete"
-            delBtn.addEventListener("click", function () {
-                this.parentElement.remove()
-            })
-
-
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${localStorageArray[i].myLinks}"target = "_blank">${localStorageArray[i].myLinks}</a>`
-            newDiv.appendChild(copyBtn)
-            newDiv.appendChild(delBtn)
-
-            resultsEl.appendChild(newDiv)
-
-        }
+        showLinks()
+       
     }
 }
 
@@ -232,7 +207,7 @@ function showLinks() {
             delBtn.innerHTML = "Delete"
             delBtn.addEventListener("click", function () {
                 this.parentElement.remove()
-
+                deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
             })
 
 
