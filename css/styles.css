@@ -8,6 +8,7 @@ body {
     max-height: 200px;
    height: fit-content; */
    height: 190px;
+   background-color: #464646;
   }
 
   .jumbotron {
@@ -51,7 +52,8 @@ body {
   }
 
   #resultSetDiv{
-    background-color: #eee; 
+    /* background-color: #eee;  */
+    background-color:white; 
     border-radius: 40px;
     margin: 10px;
    align-items: center;
