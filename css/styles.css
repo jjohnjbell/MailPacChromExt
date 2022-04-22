@@ -8,7 +8,9 @@ body {
     max-height: 200px;
    height: fit-content; */
    height: 190px;
-   background-color: #464646;
+   background-color: #6688CC;
+   
+   
   }
 
   .jumbotron {
@@ -23,10 +25,11 @@ body {
   }
 
   .text-muted {
-    --bs-text-opacity:1;
-    color:#6c757d!important;
-    font-size:24.0957px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* --bs-text-opacity:8; */
+    /* color:#6c757d!important; */
+    color: white;
+    font-size:25px;
+    font-family: 'Merienda';
   }
 
   img{
@@ -86,6 +89,7 @@ body {
    font-size:larger;
     font-size:20px;  
 margin-left: 40%;
+color: white;
 
     
   }
