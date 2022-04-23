@@ -1,10 +1,16 @@
 {
+    "developer": {
+        "name": "Joshua Bell",
+        "url": "https://www.linkedin.com/in/joshua-bell-16a07629/"
+    },
+    "author": "Joshua Bell",
+    "description": "Simply capture the URL of ur item(s) then go to MailPacs site, click the copy button of your item, paste in the search bar then find out the grand total of your item!",
     "manifest_version": 3,
     "version": "1.0",
-    "name": "Mail Pac Helper",
+    "name": "Item Price Checker",
     "action": {
         "default_popup": "index.html",
-        "default_icon": "icon.png"
+        "default_icon": "IPC.png"
     },
     "permissions": [
         "tabs"
