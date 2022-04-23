@@ -1,16 +1,7 @@
-/* Space out content a bit */
+
 body {
-  /* border: solid 1px black;
-    padding-top: 20px;
-    padding-bottom: 20px; 
-    min-width:800px;
-    width: fit-content;
-    max-height: 200px;
-   height: fit-content; */
   height: 190px;
   background-color: #6688CC;
-
-
 }
 
 .jumbotron {
@@ -20,13 +11,9 @@ body {
   background-color: #eee;
   padding: 10px;
   font-size: 21px;
-
-
 }
 
 .text-muted {
-  /* --bs-text-opacity:8; */
-  /* color:#6c757d!important; */
   color: white;
   font-size: 25px;
   font-family: 'inherit';
@@ -40,22 +27,11 @@ img {
   margin-bottom: 10px;
 }
 
-
-
-/* Everything but the jumbotron gets side spacing for mobile first views
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 15px;
-    padding-left: 15px;
-  } */
-
 .footer {
   float: right;
 }
 
 #resultSetDiv {
-  /* background-color: #eee;  */
   background-color: white;
   border-radius: 40px;
   margin: 10px;
@@ -85,7 +61,6 @@ img {
 #popUp {
   height: fit-content;
   width: fit-content;
-  /* visibility: hidden;*/
   font-size: larger;
   font-weight: bolder;
   font-size: 20px;
@@ -99,41 +74,23 @@ img {
   margin: 0px;
   float: right;
   color: white;
-  /* color: #f522af; */
-
   font-family: inherit;
-
-
 }
 
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  /* Make the masthead heading the same height as the navigation */
 }
 
-/* Custom page footer */
-/* .footer {
- 
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-  } */
-
-/* Customize container */
-/* @media (min-width: 768px) { */
 
 .container {
-  /* max-width: 730px; */
-  /* width: 550px; */
   width: 550px;
   height: 90px
 }
 
-/* } */
-.container-narrow>hr {
 
+.container-narrow>hr {
   margin: 30px 0;
 }
 

@@ -1,19 +1,13 @@
 window.onload = showLinks()
 
-//Connect to Div's
+//Connect to Div containers
 let resultsEl = document.getElementById("results")
 
 let popUp = document.getElementById("popUp")
-let popUp2 = document.getElementById("popUp2")
 
 //Connect to Button Elements
 const getLinksBtn = document.getElementById("myBtn-El")
 const deleteBtn = document.getElementById("deleteBtn-El")
-//const testArray = []
-//const showLinksBtn = document.getElementById("showLinks-El")
-
-
-// //populate local storage
 
 //PopUp function
 function popDisplay(text) {
@@ -43,15 +37,13 @@ function getLinks() {
         //If Local Storage is empty, Assign Bookmark values and push to Local Storage
         if (localStorage.getItem("myMarks") === null) {
             resultsEl.innerHTML = ""
+            
             //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
             bookmarks.trueLink = tabs[0].url
             bookmarkObjectArray.push(bookmarks)
             localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
-
-            // popUp.style = "visibility: display"
             popDisplay("Link Grabbed")
-            //showLinksBtn.style = "display=visible"
 
             //Render Local Storage Items to Screen
             let lsContent = JSON.parse(localStorage.getItem("myMarks"))
@@ -71,8 +63,6 @@ function getLinks() {
                     this.parentElement.remove()
                     deleteSpecificItem(lsContent, lsContent[i])
                 })
-
-
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
@@ -88,7 +78,6 @@ function getLinks() {
             bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
 
             //Assign values to the Bookmark Object
-
             if (checkDuplicates(bookmarkObjectArray, tabs[0].url)) {
                 //If there exists the current URL in the Local Storage, do nothing except render what's already
                 //in Local Storage to the screen
@@ -125,7 +114,6 @@ function getLinks() {
                 localStorage.setItem("myMarks", JSON.stringify(bookmarkObjectArray))
 
                 popDisplay("Link Grabbed")
-                //  showLinksBtn.style = "display=visible"
 
                 //Render Locasl Storage Items to Screen
                 for (let i = 0; i < bookmarkObjectArray.length; i++) {
@@ -144,9 +132,6 @@ function getLinks() {
                         this.parentElement.remove()
                         deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                     })
-
-
-
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
                     newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
@@ -180,7 +165,7 @@ function deleteSpecificItem(localStorageArray, objectKeyPair) {
         resultsEl.innerHTML = ""
         localStorage.setItem("myMarks", JSON.stringify(localStorageArray))
         showLinks()
-       
+
     }
 }
 
