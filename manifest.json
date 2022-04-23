@@ -8,15 +8,6 @@
         "default_popup": "index.html",
         "default_icon": "IPC.png"
     },
-    "commands": {
-        "_execute_action": {
-          "suggested_key": {
-            "default": "Ctrl+Shift+P",
-            "mac": "MacCtrl+Shift+P"
-          },
-          "description": "Opens Price Checker Extension"
-        }
-      },
     "permissions": [
         "tabs"
     ]
