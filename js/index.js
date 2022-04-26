@@ -66,9 +66,8 @@ function getLinks() {
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
-                newDiv.appendChild(copyBtn)
                 newDiv.appendChild(delBtn)
-
+                newDiv.appendChild(copyBtn)
                 resultsEl.appendChild(newDiv)
             }
 
