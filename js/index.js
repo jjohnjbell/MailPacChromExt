@@ -37,7 +37,7 @@ function getLinks() {
         //If Local Storage is empty, Assign Bookmark values and push to Local Storage
         if (localStorage.getItem("myMarks") === null) {
             resultsEl.innerHTML = ""
-            
+
             //Assign values to the Bookmark Object
             bookmarks.myLinks = newUrl
             bookmarks.trueLink = tabs[0].url
@@ -51,6 +51,7 @@ function getLinks() {
 
                 let copyBtn = document.createElement('button')
                 copyBtn.className = "resultSetBtn"
+                copyBtn.id = "copyBtnEl"
                 copyBtn.innerHTML = "Copy"
                 copyBtn.addEventListener("click", function () {
                     navigator.clipboard.writeText(lsContent[i].trueLink)
@@ -58,6 +59,7 @@ function getLinks() {
 
                 let delBtn = document.createElement('button')
                 delBtn.className = "resultSetBtn"
+                delBtn.id = "deleteBtn"
                 delBtn.innerHTML = "Delete"
                 delBtn.addEventListener("click", function () {
                     this.parentElement.remove()
@@ -84,6 +86,7 @@ function getLinks() {
                 for (let i = 0; i < bookmarkObjectArray.length; i++) {
                     let copyBtn = document.createElement('button')
                     copyBtn.className = "resultSetBtn"
+                    copyBtn.id = "copyBtnEl"
                     copyBtn.innerHTML = "Copy"
                     copyBtn.addEventListener("click", function () {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
@@ -91,6 +94,7 @@ function getLinks() {
 
                     let delBtn = document.createElement('button')
                     delBtn.className = "resultSetBtn"
+                    delBtn.id = "deleteBtn"
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
@@ -101,8 +105,9 @@ function getLinks() {
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
                     newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-                    newDiv.appendChild(copyBtn)
+
                     newDiv.appendChild(delBtn)
+                    newDiv.appendChild(copyBtn)
 
                     resultsEl.appendChild(newDiv)
                 }
@@ -119,6 +124,7 @@ function getLinks() {
 
                     let copyBtn = document.createElement('button')
                     copyBtn.className = "resultSetBtn"
+                    copyBtn.id = "copyBtnEl"
                     copyBtn.innerHTML = "Copy"
                     copyBtn.addEventListener("click", function () {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
@@ -126,6 +132,7 @@ function getLinks() {
 
                     let delBtn = document.createElement('button')
                     delBtn.className = "resultSetBtn"
+                    delBtn.id = "deleteBtn"
                     delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
@@ -134,8 +141,9 @@ function getLinks() {
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
                     newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-                    newDiv.appendChild(copyBtn)
+
                     newDiv.appendChild(delBtn)
+                    newDiv.appendChild(copyBtn)
 
                     resultsEl.appendChild(newDiv)
 
@@ -181,6 +189,7 @@ function showLinks() {
 
             let copyBtn = document.createElement('button')
             copyBtn.className = "resultSetBtn"
+            copyBtn.id = "copyBtnEl"
             copyBtn.innerHTML = "Copy"
             copyBtn.addEventListener("click", function () {
                 navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
@@ -188,6 +197,7 @@ function showLinks() {
 
             let delBtn = document.createElement('button')
             delBtn.className = "resultSetBtn"
+            delBtn.id = "deleteBtn"
             delBtn.innerHTML = "Delete"
             delBtn.addEventListener("click", function () {
                 this.parentElement.remove()
@@ -198,9 +208,9 @@ function showLinks() {
             let newDiv = document.createElement('div')
             newDiv.id = "resultSetDiv"
             newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-            newDiv.appendChild(copyBtn)
+           
             newDiv.appendChild(delBtn)
-
+            newDiv.appendChild(copyBtn)
             document.getElementById("results").appendChild(newDiv)
 
         }

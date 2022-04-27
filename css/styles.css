@@ -45,11 +45,41 @@ img {
 
 }
 
+/*Style for child divs buttons*/
+
 .resultSetBtn {
   float: right;
   margin-right: 5px;
   padding: 5px;
   border-radius: 40px;
+}
+
+#deleteBtn{
+  background-color: red;
+  color:white;
+  font-size: 18px;
+  margin-top:-5px;
+}
+
+#copyBtnEl{
+  font-size: 18px;
+  margin-top:-5px;
+}
+
+
+.resultSetBtn:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+.resultSetBtn:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.resultSetBtn:focus {
+  outline: none;
+  border: 2px solid #4285f4;
 }
 
 
