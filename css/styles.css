@@ -1,25 +1,49 @@
 
 body {
   height: 190px;
-  background-color: #6688CC;
+  background-color: #78909c;
+
 }
 
 
 /* TESTING for master work!*/
 
 .jumbotron {
-  border: solid 1px black;
+  /* border: solid 1px black; */
   text-align: center;
   border-radius: 10px;
-  background-color: #eee;
+  /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
+}
+
+#myBtn-El{
+  font-weight: bolder;
+  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+}
+
+#myBtn-El:hover{
+  background-color:blue;
+  color:white;
+}
+
+#deleteBtn-El{
+  
+    font-weight: bolder;
+  
+    box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  
+}
+
+#deleteBtn-El:hover{
+  background-color:red;
+  color:white;
 }
 
 .text-muted {
   color: white;
   font-size: 25px;
-  font-family: 'inherit';
+  /* font-family: 'inherit'; */
 }
 
 img {
@@ -55,21 +79,33 @@ img {
 }
 
 #deleteBtn{
-  background-color: red;
-  color:white;
+  /* background-color: red; */
+  /* color:white; */
   font-size: 18px;
   margin-top:-5px;
 }
+#deleteBtn:hover{
+  background-color: red;
+}
+
+#deleteBtnEl:hover{
+  background-color: red;
+}
+
 
 #copyBtnEl{
   font-size: 18px;
   margin-top:-5px;
 }
 
+#copyBtnEl:hover{
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+}
+
 
 .resultSetBtn:hover {
   background: #F6F9FE;
-  color: #174ea6;
+  /* color: #174ea6; */
 }
 
 .resultSetBtn:active {
@@ -107,7 +143,7 @@ img {
   margin: 0px;
   float: right;
   color: white;
-  font-family: inherit;
+  /* font-family: inherit; */
 }
 
 .header h3 {
@@ -143,9 +179,9 @@ img {
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  /* font-family: "Google Sans", Roboto, Arial, sans-serif; */
   font-size: 14px;
-  font-weight: 500;
+  /* font-weight: 500; */
   height: 48px;
   justify-content: center;
   letter-spacing: .25px;
