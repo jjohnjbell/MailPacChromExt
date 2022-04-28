@@ -80,8 +80,10 @@ function getLinks() {
                 delBtn.title="Delete this item"
                 delBtn.className = "resultSetBtn"
                 delBtn.addEventListener("click", function () {
+                    if (deleteUrlConfirmation("Delete this URL?")){
                     this.parentElement.remove()
                     deleteSpecificItem(lsContent, lsContent[i])
+                    }
                 })
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
@@ -127,8 +129,10 @@ function getLinks() {
                     delBtn.title="Delete this item"
                     delBtn.className = "resultSetBtn"
                     delBtn.addEventListener("click", function () {
+                        if (deleteUrlConfirmation("Delete this URL?")){
                         this.parentElement.remove()
-                        deleteSpecificItem(lsContent, lsContent[i])
+                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        }
                     })
 
                     let newDiv = document.createElement('div')
@@ -176,8 +180,10 @@ function getLinks() {
                     delBtn.title="Delete this item"
                     delBtn.className = "resultSetBtn"
                     delBtn.addEventListener("click", function () {
+                        if (deleteUrlConfirmation("Delete this URL?")){
                         this.parentElement.remove()
-                        deleteSpecificItem(lsContent, lsContent[i])
+                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        }
                     })
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
@@ -253,8 +259,10 @@ function showLinks() {
             delBtn.title="Delete this item"
             delBtn.className = "resultSetBtn"
             delBtn.addEventListener("click", function () {
+                if (deleteUrlConfirmation("Delete this URL?")){
                 this.parentElement.remove()
                 deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                }
             })
 
             let newDiv = document.createElement('div')
@@ -270,13 +278,30 @@ function showLinks() {
 }
 
 //Create function to remove the Div's that store the Result Set
-function clearChild() {
-    document.getElementById("resultSetDiv").remove()
-}
+// function clearChild() {
+//     document.getElementById("resultSetDiv").remove()
+// }
 
 //Create Function to clear Local Storage
 deleteBtn.addEventListener("click", function () {
+    let checkLS = JSON.parse(localStorage.getItem("myMarks"))
+    if((checkLS != null ) || (checkLS != "{}")){
+    if (deleteUrlConfirmation("Delete all your URLs?")){
     localStorage.clear()
     resultsEl.innerHTML = ""
+    }
+}else{
+    popDisplay("No URLs to delete!")
+}
 })
 
+
+//Create Function to confirm before deletion
+function deleteUrlConfirmation(message){
+    let decision = confirm(message)
+    if (decision){
+        return true
+    }else{
+        return false
+    }
+}
