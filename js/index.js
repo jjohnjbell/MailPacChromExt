@@ -254,7 +254,7 @@ function showLinks() {
             delBtn.className = "resultSetBtn"
             delBtn.addEventListener("click", function () {
                 this.parentElement.remove()
-                deleteSpecificItem(lsContent, lsContent[i])
+                deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
             })
 
             let newDiv = document.createElement('div')
