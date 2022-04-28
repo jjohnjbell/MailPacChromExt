@@ -57,10 +57,28 @@ function getLinks() {
                     navigator.clipboard.writeText(lsContent[i].trueLink)
                 })
 
-                let delBtn = document.createElement('button')
+                // let delBtn = document.createElement('button')
+                // delBtn.className = "resultSetBtn"
+                // delBtn.id = "deleteBtn"
+                // delBtn.innerHTML = "Delete"
+                // delBtn.addEventListener("click", function () {
+                //     this.parentElement.remove()
+                //     deleteSpecificItem(lsContent, lsContent[i])
+                // })
+                // let newDiv = document.createElement('div')
+                // newDiv.id = "resultSetDiv"
+                // newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
+                // newDiv.appendChild(delBtn)
+                // newDiv.appendChild(copyBtn)
+                // resultsEl.appendChild(newDiv)
+
+                let delBtn = document.createElement('img')
+                delBtn.src = "/img/close.png"
+                delBtn.id = "closeIcon"
+                delBtn.style.width="18px"
+                delBtn.style.height="18px"
+                delBtn.title="Delete this item"
                 delBtn.className = "resultSetBtn"
-                delBtn.id = "deleteBtn"
-                delBtn.innerHTML = "Delete"
                 delBtn.addEventListener("click", function () {
                     this.parentElement.remove()
                     deleteSpecificItem(lsContent, lsContent[i])
@@ -92,15 +110,26 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    let delBtn = document.createElement('button')
+                    // let delBtn = document.createElement('button')
+                    // delBtn.className = "resultSetBtn"
+                    // delBtn.id = "deleteBtn"
+                    // delBtn.innerHTML = "Delete"
+                    // delBtn.addEventListener("click", function () {
+                    //     this.parentElement.remove()
+                    //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                    // })
+
+                    let delBtn = document.createElement('img')
+                    delBtn.src = "/img/close.png"
+                    delBtn.id = "closeIcon"
+                    delBtn.style.width="18px"
+                    delBtn.style.height="18px"
+                    delBtn.title="Delete this item"
                     delBtn.className = "resultSetBtn"
-                    delBtn.id = "deleteBtn"
-                    delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        deleteSpecificItem(lsContent, lsContent[i])
                     })
-
 
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
@@ -130,13 +159,25 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    let delBtn = document.createElement('button')
+                    // let delBtn = document.createElement('button')
+                    // delBtn.className = "resultSetBtn"
+                    // delBtn.id = "deleteBtn"
+                    // delBtn.innerHTML = "Delete"
+                    // delBtn.addEventListener("click", function () {
+                    //     this.parentElement.remove()
+                    //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                    // })
+
+                    let delBtn = document.createElement('img')
+                    delBtn.src = "/img/close.png"
+                    delBtn.id = "closeIcon"
+                    delBtn.style.width="18px"
+                    delBtn.style.height="18px"
+                    delBtn.title="Delete this item"
                     delBtn.className = "resultSetBtn"
-                    delBtn.id = "deleteBtn"
-                    delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
                         this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        deleteSpecificItem(lsContent, lsContent[i])
                     })
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
@@ -195,20 +236,31 @@ function showLinks() {
                 navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
             })
 
-            let delBtn = document.createElement('button')
+            // let delBtn = document.createElement('button')
+            // delBtn.className = "resultSetBtn"
+            // delBtn.id = "deleteBtn"
+            // delBtn.innerHTML = "Delete"
+            // delBtn.addEventListener("click", function () {
+            //     this.parentElement.remove()
+            //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+            // })
+
+            let delBtn = document.createElement('img')
+            delBtn.src = "/img/close.png"
+            delBtn.id = "closeIcon"
+            delBtn.style.width="18px"
+            delBtn.style.height="18px"
+            delBtn.title="Delete this item"
             delBtn.className = "resultSetBtn"
-            delBtn.id = "deleteBtn"
-            delBtn.innerHTML = "Delete"
             delBtn.addEventListener("click", function () {
                 this.parentElement.remove()
-                deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                deleteSpecificItem(lsContent, lsContent[i])
             })
-
 
             let newDiv = document.createElement('div')
             newDiv.id = "resultSetDiv"
             newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-           
+
             newDiv.appendChild(delBtn)
             newDiv.appendChild(copyBtn)
             document.getElementById("results").appendChild(newDiv)
