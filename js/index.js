@@ -285,7 +285,7 @@ function showLinks() {
 //Create Function to clear Local Storage
 deleteBtn.addEventListener("click", function () {
     let checkLS = JSON.parse(localStorage.getItem("myMarks"))
-    if((checkLS != null ) || (checkLS != "[]")){
+    if(checkLS){
     if (deleteUrlConfirmation("Delete all your URLs?")){
     localStorage.clear()
     resultsEl.innerHTML = ""
