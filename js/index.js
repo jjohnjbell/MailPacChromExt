@@ -32,7 +32,7 @@ function getLinks() {
     //Select current Chrome Tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let bookmarkObjectArray = []
-        let newUrl = tabs[0].url.substring(0, 30) + "..."
+        let newUrl = tabs[0].url.substring(8, 23) + "..."
 
         //If Local Storage is empty, Assign Bookmark values and push to Local Storage
         if (localStorage.getItem("myMarks") === null) {
@@ -56,21 +56,6 @@ function getLinks() {
                 copyBtn.addEventListener("click", function () {
                     navigator.clipboard.writeText(lsContent[i].trueLink)
                 })
-
-                // let delBtn = document.createElement('button')
-                // delBtn.className = "resultSetBtn"
-                // delBtn.id = "deleteBtn"
-                // delBtn.innerHTML = "Delete"
-                // delBtn.addEventListener("click", function () {
-                //     this.parentElement.remove()
-                //     deleteSpecificItem(lsContent, lsContent[i])
-                // })
-                // let newDiv = document.createElement('div')
-                // newDiv.id = "resultSetDiv"
-                // newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
-                // newDiv.appendChild(delBtn)
-                // newDiv.appendChild(copyBtn)
-                // resultsEl.appendChild(newDiv)
 
                 let delBtn = document.createElement('img')
                 delBtn.src = "/img/close.png"

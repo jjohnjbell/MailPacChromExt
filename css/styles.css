@@ -2,6 +2,7 @@
 body {
   height: 190px;
   background-color: #78909c;
+  width:25%;
 
 }
 
@@ -11,10 +12,11 @@ body {
 .jumbotron {
   /* border: solid 1px black; */
   text-align: center;
-  border-radius: 10px;
+  border-radius: 80px;
   /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
+  
 }
 
 #myBtn-El{
@@ -61,10 +63,14 @@ img {
 #resultSetDiv {
   background-color: white;
   border-radius: 40px;
-  margin: 10px;
-  align-items: center;
+  /* margin: 10px; */
+  margin-left: 8.5%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  /* align-items: center; */
   padding: 20px;
   font-size: large;
+  width: 70%;
 
 
 }
@@ -141,7 +147,7 @@ img {
   font-size: larger;
   font-weight: bolder;
   font-size: 20px;
-  margin-left: 40%;
+  margin-left: 115px;
   color: white;
 
 
@@ -162,7 +168,7 @@ img {
 
 
 .container {
-  width: 550px;
+  width: 380px;
   height: 90px
 }
 
