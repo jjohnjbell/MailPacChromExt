@@ -1,13 +1,10 @@
-
 body {
-  height: 190px;
+  height: 115px;
+  /* min-height: fit-content; */
   background-color: #78909c;
-  width:25%;
+  width: 25%;
 
 }
-
-
-/* TESTING for master work!*/
 
 .jumbotron {
   /* border: solid 1px black; */
@@ -16,31 +13,32 @@ body {
   /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
-  
+
 }
 
-#myBtn-El{
+#myBtn-El {
   font-weight: bolder;
   box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
 
-#myBtn-El:hover{
-  background-color:blue;
-  color:white;
+#myBtn-El:hover {
+  background-color: blue;
+  color: white;
 }
 
-#deleteBtn-El{
-  
-    font-weight: bolder;
-  
-    box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-  
+#deleteBtn-El:hover {
+  background-color: red;
+  color: white;
 }
 
-#deleteBtn-El:hover{
-  background-color:red;
-  color:white;
+#deleteBtn-El {
+
+  font-weight: bolder;
+
+  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
+
+
 
 .text-muted {
   color: white;
@@ -66,7 +64,7 @@ img {
   /* margin: 10px; */
   margin-left: 8.5%;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   /* align-items: center; */
   padding: 20px;
   font-size: large;
@@ -85,34 +83,36 @@ img {
   border-radius: 40px;
 }
 
-#deleteBtn{
+#deleteBtn {
   /* background-color: red; */
   /* color:white; */
   font-size: 18px;
-  margin-top:-5px;
+  margin-top: -5px;
 }
 
-#closeIcon{
+#closeIcon {
   margin-top: -2px;
 }
-#deleteBtn:hover{
+
+#deleteBtn:hover {
   background-color: red;
 }
 
-#deleteBtnEl:hover{
+#deleteBtnEl:hover {
   background-color: red;
 }
-#closeIcon:hover{
+
+#closeIcon:hover {
   box-shadow: 0 2px 2px 0 rgb(60 64 67 / 30%), 0 1px 1px 1px rgb(60 64 67 / 15%);
 }
 
 
-#copyBtnEl{
+#copyBtnEl {
   font-size: 18px;
-  margin-top:-5px;
+  margin-top: -5px;
 }
 
-#copyBtnEl:hover{
+#copyBtnEl:hover {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
 
@@ -190,7 +190,7 @@ img {
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
   color: #3c4043;
-  cursor: pointer;
+  cursor: -webkit-grab;
   display: inline-flex;
   fill: currentcolor;
   /* font-family: "Google Sans", Roboto, Arial, sans-serif; */
