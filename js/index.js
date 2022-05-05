@@ -14,8 +14,7 @@ function popDisplay(text) {
     popUp.innerHTML = text
     popUp.style = "visibility:visible"
     //Remove Pop Up div after 1200 milliseconds
-    setTimeout(() => popUp.style = "visibility:hidden", 1200)
-   
+    setTimeout(() => popUp.style="display:none", 1200)
 }
 
 //Create Bookmark Object
