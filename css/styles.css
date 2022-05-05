@@ -6,6 +6,34 @@ body {
 
 }
 
+#extName{
+   /* text-transform: uppercase; */
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #0317f8 67%,
+    #0051ff 100%
+  );
+   background-size: auto auto; 
+   background-clip: border-box; 
+   background-size: 200% auto; 
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      /* font-size: 190px; */
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
 .jumbotron {
   /* border: solid 1px black; */
   text-align: center;
@@ -13,6 +41,7 @@ body {
   /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
+ 
 
 }
 
@@ -161,8 +190,11 @@ img {
 }
 
 #siteLink {
-  margin: 0px;
-  float: right;
+  /* margin: 0px; */
+  margin-top:-5px;
+  font-size: 3px;
+  border:1px solid black;
+  /* float: right; */
   color: white;
   /* font-family: inherit; */
 }
