@@ -195,7 +195,6 @@ function showLinks() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     //Get content from Local Storage
     let bookmarkObjectArray = []
-    //let newUrl = tabs[0].url.substring(8, 23) + "..."
     bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
     document.getElementById("results").innerHTML = ""
 
