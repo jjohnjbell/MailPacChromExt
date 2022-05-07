@@ -6,6 +6,8 @@ body {
 
 }
 
+
+/* Item Price Checker Text with Visuals  START*/
 #extName{
    /* text-transform: uppercase; */
   background-image: linear-gradient(
@@ -16,6 +18,7 @@ body {
     #0051ff 100%
   );
    background-size: auto auto; 
+   font-size: 25px;
    background-clip: border-box; 
    background-size: 200% auto; 
   color: #fff;
@@ -25,7 +28,6 @@ body {
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
   display: inline-block;
-      /* font-size: 190px; */
 }
 
 @keyframes textclip {
@@ -33,7 +35,10 @@ body {
     background-position: 200% center;
   }
 }
+/* Item Price Checker Text with Visuals  END*/
 
+
+/* Container for GRAB and DELETE ALL  START */
 .jumbotron {
   /* border: solid 1px black; */
   text-align: center;
@@ -41,10 +46,10 @@ body {
   /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
- 
-
 }
+/* Container for GRAB and DELETE ALL  START */
 
+/* myBtn-EL CSS  START*/
 #myBtn-El {
   font-weight: bolder;
   box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
@@ -59,7 +64,10 @@ body {
 #myBtn-El:active{
   cursor: grabbing;
 }
+/* myBtn-EL CSS  START*/
 
+
+/* deleteBtn-EL CSS  START*/
 #deleteBtn-El:hover {
   background-color: red;
   color: white;
@@ -72,23 +80,18 @@ body {
 
   box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
+/* deleteBtn-EL CSS  END*/
 
-
-
+/* Container for Item Price Checker Text START */
 .text-muted {
   color: white;
   font-size: 25px;
+  padding:0px;
+  margin:0px;
   /* font-family: 'inherit'; */
 }
+/* Container for Item Price Checker Text END */
 
-img {
-  padding-left: 10%
-}
-
-.header {
-  margin-bottom: 10px;
-  
-}
 
 .footer {
   float: right;
@@ -171,11 +174,7 @@ img {
 
 
 
-/* Custom page header */
-.header {
-  padding-bottom: 2px;
-  border-bottom: 1px solid #e5e5e5;
-}
+
 
 #popUp {
   height: fit-content;
@@ -189,21 +188,31 @@ img {
 
 }
 
+/* CSS for the Link to carry you to Mailpac.com START */
 #siteLink {
-  /* margin: 0px; */
-  margin-top:-5px;
-  font-size: 3px;
-  border:1px solid black;
-  /* float: right; */
+  /* margin-top:-5px; */
   color: white;
-  /* font-family: inherit; */
+  padding:0px;
+ border: 0px;
+  margin:0px;
+  display:block;
+  border-bottom: 1px solid #e5e5e5;
+  font-size:large;
+ 
 }
+
+
+/* Custom page header */
+/* .header {
+  
+} */
 
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
 }
+
+
 
 
 .container {
