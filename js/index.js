@@ -14,7 +14,7 @@ function popDisplay(text) {
     popUp.innerHTML = text
     popUp.style = "visibility:visible"
     //Remove Pop Up div after 1200 milliseconds
-    setTimeout(() => popUp.style = "visibility:hidden", 1200)
+    setTimeout(() => popUp.style = "display:none", 1200)
 }
 
 //Create Bookmark Object
@@ -32,7 +32,7 @@ function getLinks() {
     //Select current Chrome Tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let bookmarkObjectArray = []
-        let newUrl = tabs[0].url.substring(0, 30) + "..."
+        let newUrl = tabs[0].url.substring(8, 23) + "..."
 
         //If Local Storage is empty, Assign Bookmark values and push to Local Storage
         if (localStorage.getItem("myMarks") === null) {
@@ -57,13 +57,18 @@ function getLinks() {
                     navigator.clipboard.writeText(lsContent[i].trueLink)
                 })
 
-                let delBtn = document.createElement('button')
+                let delBtn = document.createElement('img')
+                delBtn.src = "/img/close.png"
+                delBtn.id = "closeIcon"
+                delBtn.style.width = "18px"
+                delBtn.style.height = "18px"
+                delBtn.title = "Delete this item"
                 delBtn.className = "resultSetBtn"
-                delBtn.id = "deleteBtn"
-                delBtn.innerHTML = "Delete"
                 delBtn.addEventListener("click", function () {
-                    this.parentElement.remove()
-                    deleteSpecificItem(lsContent, lsContent[i])
+                    if (deleteUrlConfirmation("Delete this URL?" + lsContent[i].myLinks)) {
+                        this.parentElement.remove()
+                        deleteSpecificItem(lsContent, lsContent[i])
+                    }
                 })
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
@@ -92,15 +97,19 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    let delBtn = document.createElement('button')
+                    let delBtn = document.createElement('img')
+                    delBtn.src = "/img/close.png"
+                    delBtn.id = "closeIcon"
+                    delBtn.style.width = "18px"
+                    delBtn.style.height = "18px"
+                    delBtn.title = "Delete this item"
                     delBtn.className = "resultSetBtn"
-                    delBtn.id = "deleteBtn"
-                    delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
-                        this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                            this.parentElement.remove()
+                            deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        }
                     })
-
 
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
@@ -130,13 +139,19 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    let delBtn = document.createElement('button')
+
+                    let delBtn = document.createElement('img')
+                    delBtn.src = "/img/close.png"
+                    delBtn.id = "closeIcon"
+                    delBtn.style.width = "18px"
+                    delBtn.style.height = "18px"
+                    delBtn.title = "Delete this item"
                     delBtn.className = "resultSetBtn"
-                    delBtn.id = "deleteBtn"
-                    delBtn.innerHTML = "Delete"
                     delBtn.addEventListener("click", function () {
-                        this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                            this.parentElement.remove()
+                            deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        }
                     })
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
@@ -177,54 +192,73 @@ function deleteSpecificItem(localStorageArray, objectKeyPair) {
 }
 
 function showLinks() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        //Get content from Local Storage
+        let bookmarkObjectArray = []
+        bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
+        document.getElementById("results").innerHTML = ""
 
-    //Get content from Local Storage
-    let bookmarkObjectArray = []
-    bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
-    document.getElementById("results").innerHTML = ""
+        if (localStorage.getItem("myMarks") != null) {
+            //Render Locasl Storage Items to Screen
+            for (let i = 0; i < bookmarkObjectArray.length; i++) {
 
-    if (localStorage.getItem("myMarks") != null) {
-        //Render Locasl Storage Items to Screen
-        for (let i = 0; i < bookmarkObjectArray.length; i++) {
+                let copyBtn = document.createElement('button')
+                copyBtn.className = "resultSetBtn"
+                copyBtn.id = "copyBtnEl"
+                copyBtn.innerHTML = "Copy"
+                copyBtn.addEventListener("click", function () {
+                    navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
+                })
 
-            let copyBtn = document.createElement('button')
-            copyBtn.className = "resultSetBtn"
-            copyBtn.id = "copyBtnEl"
-            copyBtn.innerHTML = "Copy"
-            copyBtn.addEventListener("click", function () {
-                navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
-            })
+                let delBtn = document.createElement('img')
+                delBtn.src = "/img/close.png"
+                delBtn.id = "closeIcon"
+                delBtn.style.width = "18px"
+                delBtn.style.height = "18px"
+                delBtn.title = "Delete this item"
+                delBtn.className = "resultSetBtn"
+                delBtn.addEventListener("click", function () {
+                    if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                        this.parentElement.remove()
+                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                    }
+                })
 
-            let delBtn = document.createElement('button')
-            delBtn.className = "resultSetBtn"
-            delBtn.id = "deleteBtn"
-            delBtn.innerHTML = "Delete"
-            delBtn.addEventListener("click", function () {
-                this.parentElement.remove()
-                deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
-            })
+                let newDiv = document.createElement('div')
+                newDiv.id = "resultSetDiv"
+                newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
+                newDiv.appendChild(delBtn)
+                newDiv.appendChild(copyBtn)
+                document.getElementById("results").appendChild(newDiv)
 
-            let newDiv = document.createElement('div')
-            newDiv.id = "resultSetDiv"
-            newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
-           
-            newDiv.appendChild(delBtn)
-            newDiv.appendChild(copyBtn)
-            document.getElementById("results").appendChild(newDiv)
-
+            }
         }
+    })
+}
+
+
+
+//Clear entire local storage
+deleteBtn.addEventListener("click", function () {
+    if ((localStorage.key(0)==="myMarks" && localStorage.getItem("myMarks")==="[]") || localStorage.key(0)!=="myMarks" ) {
+        popDisplay("No URLs to delete!")
+    }else if(deleteUrlConfirmation("Delete all your URLs?")) {   
+            localStorage.clear()
+            resultsEl.innerHTML = ""
+        }
+    }) 
+     
+ 
+
+
+
+//Create Function to confirm before deletion
+function deleteUrlConfirmation(message) {
+    let decision = confirm(message)
+    if (decision) {
+        return true
+    } else {
+        return false
     }
 }
-
-//Create function to remove the Div's that store the Result Set
-function clearChild() {
-    document.getElementById("resultSetDiv").remove()
-}
-
-//Create Function to clear Local Storage
-deleteBtn.addEventListener("click", function () {
-    localStorage.clear()
-    resultsEl.innerHTML = ""
-})
-
