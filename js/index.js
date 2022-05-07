@@ -14,7 +14,7 @@ function popDisplay(text) {
     popUp.innerHTML = text
     popUp.style = "visibility:visible"
     //Remove Pop Up div after 1200 milliseconds
-    setTimeout(() => popUp.style="display:none", 1200)
+    setTimeout(() => popUp.style = "display:none", 1200)
 }
 
 //Create Bookmark Object
@@ -60,14 +60,14 @@ function getLinks() {
                 let delBtn = document.createElement('img')
                 delBtn.src = "/img/close.png"
                 delBtn.id = "closeIcon"
-                delBtn.style.width="18px"
-                delBtn.style.height="18px"
-                delBtn.title="Delete this item"
+                delBtn.style.width = "18px"
+                delBtn.style.height = "18px"
+                delBtn.title = "Delete this item"
                 delBtn.className = "resultSetBtn"
                 delBtn.addEventListener("click", function () {
-                    if (deleteUrlConfirmation("Delete this URL?")){
-                    this.parentElement.remove()
-                    deleteSpecificItem(lsContent, lsContent[i])
+                    if (deleteUrlConfirmation("Delete this URL?" + lsContent[i].myLinks)) {
+                        this.parentElement.remove()
+                        deleteSpecificItem(lsContent, lsContent[i])
                     }
                 })
                 let newDiv = document.createElement('div')
@@ -100,14 +100,14 @@ function getLinks() {
                     let delBtn = document.createElement('img')
                     delBtn.src = "/img/close.png"
                     delBtn.id = "closeIcon"
-                    delBtn.style.width="18px"
-                    delBtn.style.height="18px"
-                    delBtn.title="Delete this item"
+                    delBtn.style.width = "18px"
+                    delBtn.style.height = "18px"
+                    delBtn.title = "Delete this item"
                     delBtn.className = "resultSetBtn"
                     delBtn.addEventListener("click", function () {
-                        if (deleteUrlConfirmation("Delete this URL?")){
-                        this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                            this.parentElement.remove()
+                            deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                         }
                     })
 
@@ -143,14 +143,14 @@ function getLinks() {
                     let delBtn = document.createElement('img')
                     delBtn.src = "/img/close.png"
                     delBtn.id = "closeIcon"
-                    delBtn.style.width="18px"
-                    delBtn.style.height="18px"
-                    delBtn.title="Delete this item"
+                    delBtn.style.width = "18px"
+                    delBtn.style.height = "18px"
+                    delBtn.title = "Delete this item"
                     delBtn.className = "resultSetBtn"
                     delBtn.addEventListener("click", function () {
-                        if (deleteUrlConfirmation("Delete this URL?")){
-                        this.parentElement.remove()
-                        deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                        if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                            this.parentElement.remove()
+                            deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                         }
                     })
                     let newDiv = document.createElement('div')
@@ -192,9 +192,10 @@ function deleteSpecificItem(localStorageArray, objectKeyPair) {
 }
 
 function showLinks() {
-
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     //Get content from Local Storage
     let bookmarkObjectArray = []
+    //let newUrl = tabs[0].url.substring(8, 23) + "..."
     bookmarkObjectArray = JSON.parse(localStorage.getItem("myMarks"))
     document.getElementById("results").innerHTML = ""
 
@@ -213,14 +214,14 @@ function showLinks() {
             let delBtn = document.createElement('img')
             delBtn.src = "/img/close.png"
             delBtn.id = "closeIcon"
-            delBtn.style.width="18px"
-            delBtn.style.height="18px"
-            delBtn.title="Delete this item"
+            delBtn.style.width = "18px"
+            delBtn.style.height = "18px"
+            delBtn.title = "Delete this item"
             delBtn.className = "resultSetBtn"
             delBtn.addEventListener("click", function () {
-                if (deleteUrlConfirmation("Delete this URL?")){
-                this.parentElement.remove()
-                deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
+                if (deleteUrlConfirmation("Delete this URL?" + bookmarkObjectArray[i].myLinks)) {
+                    this.parentElement.remove()
+                    deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                 }
             })
 
@@ -234,6 +235,7 @@ function showLinks() {
 
         }
     }
+    })
 }
 
 
@@ -241,23 +243,23 @@ function showLinks() {
 //Create Function to clear Local Storage
 deleteBtn.addEventListener("click", function () {
     let checkLS = JSON.parse(localStorage.getItem("myMarks"))
-    if(checkLS){
-    if (deleteUrlConfirmation("Delete all your URLs?")){
-    localStorage.clear()
-    resultsEl.innerHTML = ""
+    if (checkLS) {
+        if (deleteUrlConfirmation("Delete all your URLs?")) {
+            localStorage.clear()
+            resultsEl.innerHTML = ""
+        }
+    } else {
+        popDisplay("No URLs to delete!")
     }
-}else{
-    popDisplay("No URLs to delete!")
-}
 })
 
 
 //Create Function to confirm before deletion
-function deleteUrlConfirmation(message){
+function deleteUrlConfirmation(message) {
     let decision = confirm(message)
-    if (decision){
+    if (decision) {
         return true
-    }else{
+    } else {
         return false
     }
 }
