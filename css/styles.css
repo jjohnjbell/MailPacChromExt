@@ -1,5 +1,5 @@
 body {
-  background-color: #78909c;
+   background-color: #78909c;
   width: 25%;
 }
 
@@ -40,13 +40,15 @@ body {
   border-radius: 80px;
   padding: 10px;
   font-size: 21px;
+  
 }
 /* Container for GRAB and DELETE ALL  START */
 
-/* myBtn-EL CSS  START*/
+/* myBtn-EL is GRAB button CSS  START*/
 #myBtn-El {
   font-weight: bolder;
   box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+ 
 }
 
 #myBtn-El:hover {
@@ -77,7 +79,7 @@ body {
 }
 
 #resultSetDiv {
-  background-color: white;
+   background-color: white;
   border-radius: 40px;
   margin-left: 8.5%;
   margin-top: 10px;
