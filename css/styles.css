@@ -1,9 +1,6 @@
 body {
-  height: 115px;
-  /* min-height: fit-content; */
   background-color: #78909c;
   width: 25%;
-
 }
 
 
@@ -12,10 +9,10 @@ body {
    /* text-transform: uppercase; */
   background-image: linear-gradient(
     -225deg,
-    #231557 0%,
-    #44107a 29%,
-    #0317f8 67%,
-    #0051ff 100%
+    #ffffff 0%,
+    #ffffffd5 29%,
+    #ffffff9a 67%,
+    #fdfdffa8 100%
   );
    background-size: auto auto; 
    font-size: 25px;
@@ -23,10 +20,9 @@ body {
    background-size: 200% auto; 
   color: #fff;
   background-clip: text;
-  text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
+  animation: textclip 5s linear infinite;
   display: inline-block;
 }
 
@@ -40,10 +36,8 @@ body {
 
 /* Container for GRAB and DELETE ALL  START */
 .jumbotron {
-  /* border: solid 1px black; */
   text-align: center;
   border-radius: 80px;
-  /* background-color: #eee; */
   padding: 10px;
   font-size: 21px;
 }
@@ -67,20 +61,6 @@ body {
 /* myBtn-EL CSS  START*/
 
 
-/* deleteBtn-EL CSS  START*/
-#deleteBtn-El:hover {
-  background-color: red;
-  color: white;
-  
-}
-
-#deleteBtn-El {
-
-  font-weight: bolder;
-
-  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-}
-/* deleteBtn-EL CSS  END*/
 
 /* Container for Item Price Checker Text START */
 .text-muted {
@@ -88,7 +68,6 @@ body {
   font-size: 25px;
   padding:0px;
   margin:0px;
-  /* font-family: 'inherit'; */
 }
 /* Container for Item Price Checker Text END */
 
@@ -100,11 +79,9 @@ body {
 #resultSetDiv {
   background-color: white;
   border-radius: 40px;
-  /* margin: 10px; */
   margin-left: 8.5%;
   margin-top: 10px;
   margin-bottom: 1px;
-  /* align-items: center; */
   padding: 20px;
   font-size: large;
   width: 70%;
@@ -122,15 +99,22 @@ body {
   border-radius: 40px;
 }
 
-#deleteBtn {
-  /* background-color: red; */
-  /* color:white; */
-  font-size: 18px;
-  margin-top: -5px;
+/* deleteBtn-EL CSS  START*/
+#deleteBtn-El:hover {
+  background-color: red;
+  color: white;
 }
 
-#closeIcon {
-  margin-top: -2px;
+#deleteBtn-El {
+  font-weight: bolder;
+  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+}
+
+
+/* Delete All Button-Removes all local storage entries*/
+#deleteBtn {
+  font-size: 18px;
+  margin-top: -5px;
 }
 
 #deleteBtn:hover {
@@ -141,11 +125,19 @@ body {
   background-color: red;
 }
 
+/* deleteBtn-EL CSS  END*/
+
+/* X image to delete child divs */
+#closeIcon {
+  margin-top: -2px;
+}
+
+
 #closeIcon:hover {
   box-shadow: 0 2px 2px 0 rgb(60 64 67 / 30%), 0 1px 1px 1px rgb(60 64 67 / 15%);
 }
 
-
+/* Copy button for each child div START*/
 #copyBtnEl {
   font-size: 18px;
   margin-top: -5px;
@@ -154,11 +146,12 @@ body {
 #copyBtnEl:hover {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
+/* Copy button for each child div END*/
 
 
+/* Class for the Child Div buttons  START */
 .resultSetBtn:hover {
   background: #F6F9FE;
-  /* color: #174ea6; */
 }
 
 .resultSetBtn:active {
@@ -170,12 +163,9 @@ body {
   outline: none;
   border: 2px solid #4285f4;
 }
+/* Class for the Child Div buttons  END */
 
-
-
-
-
-
+/* POP UP Element  START*/
 #popUp {
   height: fit-content;
   width: fit-content;
@@ -184,9 +174,8 @@ body {
   font-size: 20px;
   margin-left: 115px;
   color: white;
-
-
 }
+/* POP UP Element  END*/
 
 /* CSS for the Link to carry you to Mailpac.com START */
 #siteLink {
@@ -198,23 +187,17 @@ body {
   display:block;
   border-bottom: 1px solid #e5e5e5;
   font-size:large;
+  font-family:'Times New Roman', Times, serif;
  
 }
 
-
-/* Custom page header */
-/* .header {
-  
-} */
 
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-
-
-
+/* Container for everything  START */
 .container {
   width: 380px;
   height: 90px
@@ -224,6 +207,8 @@ body {
 .container-narrow>hr {
   margin: 30px 0;
 }
+
+/* Container for everything  END */
 
 
 /* STYLED BUTTONS */
@@ -238,12 +223,9 @@ body {
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
   color: #3c4043;
-  /* cursor: -webkit-grab; */
   display: inline-flex;
   fill: currentcolor;
-  /* font-family: "Google Sans", Roboto, Arial, sans-serif; */
   font-size: 14px;
-  /* font-weight: 500; */
   height: 48px;
   justify-content: center;
   letter-spacing: .25px;

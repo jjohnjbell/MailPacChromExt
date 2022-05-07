@@ -97,15 +97,6 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    // let delBtn = document.createElement('button')
-                    // delBtn.className = "resultSetBtn"
-                    // delBtn.id = "deleteBtn"
-                    // delBtn.innerHTML = "Delete"
-                    // delBtn.addEventListener("click", function () {
-                    //     this.parentElement.remove()
-                    //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
-                    // })
-
                     let delBtn = document.createElement('img')
                     delBtn.src = "/img/close.png"
                     delBtn.id = "closeIcon"
@@ -148,14 +139,6 @@ function getLinks() {
                         navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
                     })
 
-                    // let delBtn = document.createElement('button')
-                    // delBtn.className = "resultSetBtn"
-                    // delBtn.id = "deleteBtn"
-                    // delBtn.innerHTML = "Delete"
-                    // delBtn.addEventListener("click", function () {
-                    //     this.parentElement.remove()
-                    //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
-                    // })
 
                     let delBtn = document.createElement('img')
                     delBtn.src = "/img/close.png"
@@ -227,15 +210,6 @@ function showLinks() {
                 navigator.clipboard.writeText(bookmarkObjectArray[i].trueLink)
             })
 
-            // let delBtn = document.createElement('button')
-            // delBtn.className = "resultSetBtn"
-            // delBtn.id = "deleteBtn"
-            // delBtn.innerHTML = "Delete"
-            // delBtn.addEventListener("click", function () {
-            //     this.parentElement.remove()
-            //     deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
-            // })
-
             let delBtn = document.createElement('img')
             delBtn.src = "/img/close.png"
             delBtn.id = "closeIcon"
@@ -262,10 +236,7 @@ function showLinks() {
     }
 }
 
-//Create function to remove the Div's that store the Result Set
-// function clearChild() {
-//     document.getElementById("resultSetDiv").remove()
-// }
+
 
 //Create Function to clear Local Storage
 deleteBtn.addEventListener("click", function () {
