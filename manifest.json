@@ -1,6 +1,6 @@
 {
     "author": "Joshua Bell",
-    "description": "Go to each of the items' pages you're interested in buying, grab their link, go to Mailpac's site, copy and paste each link into the search bar and see the grand total cost for each item!",
+    "description": "Go to your items' page, GRAB the links, go to Mailpac's site, copy each item's URL and paste to see final cost!",
     "manifest_version": 3,
     "version": "0.0.0.1",
     "name": "Item Price Checker",
