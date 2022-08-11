@@ -1,5 +1,5 @@
 body {
-   background-color: #78909c;
+    background-color: #78909c; 
   width: 25%;
 }
 
@@ -79,16 +79,25 @@ body {
 }
 
 #resultSetDiv {
-   background-color: white;
+  background-color: white;
   border-radius: 40px;
-  margin-left: 8.5%;
+  /* margin-left: 8.5%;
   margin-top: 10px;
-  margin-bottom: 1px;
+  margin-bottom: 1px; */
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin: 5px auto;
   padding: 20px;
   font-size: large;
   width: 70%;
+}
 
-
+#btnDiv{
+  background:orange;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
@@ -130,9 +139,9 @@ body {
 /* deleteBtn-EL CSS  END*/
 
 /* X image to delete child divs */
-#closeIcon {
-  margin-top: -2px;
-}
+/* #closeIcon {
+  
+} */
 
 
 #closeIcon:hover {
@@ -142,7 +151,6 @@ body {
 /* Copy button for each child div START*/
 #copyBtnEl {
   font-size: 18px;
-  margin-top: -5px;
 }
 
 #copyBtnEl:hover {
@@ -202,6 +210,7 @@ body {
 /* Container for everything  START */
 .container {
   width: 380px;
+  /* background-color: white; */
   height: 90px
 }
 
