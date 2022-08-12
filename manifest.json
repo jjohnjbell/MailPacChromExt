@@ -2,7 +2,7 @@
     "author": "Joshua Bell",
     "description": "Go to your items' page, GRAB the links, go to Mailpac's site, copy each item's URL and paste to see final cost!",
     "manifest_version": 3,
-    "version": "0.0.0.1",
+    "version": "0.0.1.0",
     "name": "Item Price Checker",
     "action": {
         "default_popup": "index.html",
