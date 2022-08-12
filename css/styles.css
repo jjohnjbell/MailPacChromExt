@@ -1,5 +1,6 @@
 body {
-  background-color: #0077b6; 
+  background-image: linear-gradient(#0077b6, #00b4d8,#caf0f8); 
+  /* background-color: #0077b6;  */
 width: 25%;
 margin: 0px;
 }
@@ -26,6 +27,7 @@ background-clip: text;
 animation: textclip 5s linear infinite;
 display: inline-block;
 margin-bottom: 0px;
+
 }
 
 @keyframes textclip {
