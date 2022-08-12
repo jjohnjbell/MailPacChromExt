@@ -70,16 +70,11 @@ function getLinks() {
                         deleteSpecificItem(lsContent, lsContent[i])
                     }
                 })
-
-                let btnDiv = document.createElement('div')
-                btnDiv.id = "btnDiv"
-                btnDiv.appendChild(delBtn)
-                btnDiv.appendChild(copyBtn)
-
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${lsContent[i].myLinks}"target = "_blank">${lsContent[i].myLinks}</a>`
-                newDiv.appendChild(btnDiv)
+                newDiv.appendChild(delBtn)
+                newDiv.appendChild(copyBtn)
                 resultsEl.appendChild(newDiv)
             }
 
@@ -116,16 +111,12 @@ function getLinks() {
                         }
                     })
 
-                    let btnDiv = document.createElement('div')
-                    btnDiv.id = "btnDiv"
-                    btnDiv.appendChild(delBtn)
-                    btnDiv.appendChild(copyBtn)
-
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
                     newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
-                    newDiv.appendChild(btnDiv)
+                    newDiv.appendChild(delBtn)
+                    newDiv.appendChild(copyBtn)
 
                     resultsEl.appendChild(newDiv)
                 }
@@ -162,17 +153,12 @@ function getLinks() {
                             deleteSpecificItem(bookmarkObjectArray, bookmarkObjectArray[i])
                         }
                     })
-
-                    let btnDiv = document.createElement('div')
-                    btnDiv.id = "btnDiv"
-                    btnDiv.appendChild(delBtn)
-                    btnDiv.appendChild(copyBtn)
-
                     let newDiv = document.createElement('div')
                     newDiv.id = "resultSetDiv"
                     newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
-                    newDiv.appendChild(btnDiv)
+                    newDiv.appendChild(delBtn)
+                    newDiv.appendChild(copyBtn)
 
                     resultsEl.appendChild(newDiv)
 
@@ -238,17 +224,12 @@ function showLinks() {
                     }
                 })
 
-
-                let btnDiv = document.createElement('div')
-                btnDiv.id = "btnDiv"
-                btnDiv.appendChild(delBtn)
-                btnDiv.appendChild(copyBtn)
-
                 let newDiv = document.createElement('div')
                 newDiv.id = "resultSetDiv"
                 newDiv.innerHTML = `<a href="${bookmarkObjectArray[i].myLinks}"target = "_blank">${bookmarkObjectArray[i].myLinks}</a>`
 
-                newDiv.appendChild(btnDiv)
+                newDiv.appendChild(delBtn)
+                newDiv.appendChild(copyBtn)
                 document.getElementById("results").appendChild(newDiv)
 
             }

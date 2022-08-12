@@ -1,10 +1,15 @@
 body {
+<<<<<<< HEAD
     background-color: #0077b6; 
     /* background-color: #78909c;  */
   margin:1px;
   display:flex;
   flex-direction: column;
   align-items:flex-start;
+=======
+   background-color: #78909c;
+  width: 25%;
+>>>>>>> parent of 69cc292 (commit on ItemPicker2.0)
 }
 
 
@@ -96,25 +101,24 @@ body {
 }
 
 #resultSetDiv {
-  background-color: white;
+   background-color: white;
   border-radius: 40px;
-  /* margin-left: 8.5%;
+  margin-left: 8.5%;
   margin-top: 10px;
-  margin-bottom: 1px; */
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-  margin: 5px auto;
+  margin-bottom: 1px;
   padding: 20px;
   font-size: large;
   width: 70%;
-}
 
+<<<<<<< HEAD
 #btnDiv{
  
   display:flex;
   justify-content: space-between;
   align-items: center;
+=======
+
+>>>>>>> parent of 69cc292 (commit on ItemPicker2.0)
 }
 
 
@@ -156,9 +160,9 @@ body {
 /* deleteBtn-EL CSS  END*/
 
 /* X image to delete child divs */
-/* #closeIcon {
-  
-} */
+#closeIcon {
+  margin-top: -2px;
+}
 
 
 #closeIcon:hover {
@@ -168,6 +172,7 @@ body {
 /* Copy button for each child div START*/
 #copyBtnEl {
   font-size: 18px;
+  margin-top: -5px;
 }
 
 #copyBtnEl:hover {
@@ -224,6 +229,21 @@ body {
   margin-bottom: 0;
 }
 
+<<<<<<< HEAD
+=======
+/* Container for everything  START */
+.container {
+  width: 380px;
+  height: 90px
+}
+
+
+.container-narrow>hr {
+  margin: 30px 0;
+}
+
+/* Container for everything  END */
+>>>>>>> parent of 69cc292 (commit on ItemPicker2.0)
 
 
 /* STYLED BUTTONS */
