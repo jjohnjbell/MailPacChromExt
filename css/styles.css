@@ -1,64 +1,69 @@
 body {
-   background-color: #78909c;
-  width: 25%;
+  background-image: linear-gradient(#0077b6, #00b4d8,#caf0f8); 
+  /* background-color: #0077b6;  */
+width: 25%;
+margin: 0px;
 }
 
 
 /* Item Price Checker Text with Visuals  START*/
 #extName{
-   /* text-transform: uppercase; */
-  background-image: linear-gradient(
-    -225deg,
-    #ffffff 0%,
-    #ffffffd5 29%,
-    #ffffff9a 67%,
-    #fdfdffa8 100%
-  );
-   background-size: auto auto; 
-   font-size: 25px;
-   background-clip: border-box; 
-   background-size: 200% auto; 
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 5s linear infinite;
-  display: inline-block;
+ /* text-transform: uppercase; */
+background-image: linear-gradient(
+  -225deg,
+  #ffffff 0%,
+  #ffffffd5 29%,
+  #ffffff9a 67%,
+  #fdfdffa8 100%
+);
+ background-size: auto auto; 
+ font-size: 25px;
+ background-clip: border-box; 
+ background-size: 200% auto; 
+color: #fff;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: textclip 5s linear infinite;
+display: inline-block;
+margin-bottom: 0px;
+
 }
 
 @keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
+to {
+  background-position: 200% center;
+}
 }
 /* Item Price Checker Text with Visuals  END*/
 
 
 /* Container for GRAB and DELETE ALL  START */
 .jumbotron {
-  text-align: center;
-  border-radius: 80px;
-  padding: 10px;
-  font-size: 21px;
-  
+text-align: center;
+border-radius: 80px;
+padding: 10px;
+font-size: 21px;
+margin-top: 2px;
+
 }
 /* Container for GRAB and DELETE ALL  START */
 
 /* myBtn-EL is GRAB button CSS  START*/
 #myBtn-El {
-  font-weight: bolder;
-  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
- 
+font-weight: bolder;
+box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+
 }
 
 #myBtn-El:hover {
-  background-color: blue;
-  color: white;
-  cursor: -webkit-grab;
+background-color: blue;
+color: white;
+cursor: -webkit-grab;
 }
 
 #myBtn-El:active{
-  cursor: grabbing;
+cursor: grabbing;
 }
 /* myBtn-EL CSS  START*/
 
@@ -66,148 +71,159 @@ body {
 
 /* Container for Item Price Checker Text START */
 .text-muted {
-  color: white;
-  font-size: 25px;
-  padding:0px;
-  margin:0px;
+color: white;
+font-size: 25px;
+padding:0px;
+margin:0px;
 }
 /* Container for Item Price Checker Text END */
 
 
 .footer {
-  float: right;
+float: right;
 }
 
 #resultSetDiv {
-   background-color: white;
-  border-radius: 40px;
-  margin-left: 8.5%;
-  margin-top: 10px;
-  margin-bottom: 1px;
-  padding: 20px;
-  font-size: large;
-  width: 70%;
+background-color: white;
+border-radius: 40px;
+/* margin-left: 8.5%;
+margin-top: 10px;
+margin-bottom: 1px; */
+display: flex;
+justify-content:space-between;
+align-items: center;
+margin: 5px auto;
+padding: 20px;
+font-size: large;
+width: 70%;
+}
 
-
+#btnDiv{
+display:flex;
+justify-content: space-between;
+align-items: center;
 }
 
 
 /*Style for child divs buttons*/
 
 .resultSetBtn {
-  float: right;
-  margin-right: 5px;
-  padding: 5px;
-  border-radius: 40px;
+float: right;
+margin-right: 5px;
+padding: 5px;
+border-radius: 40px;
 }
 
 /* deleteBtn-EL CSS  START*/
 #deleteBtn-El:hover {
-  background-color: red;
-  color: white;
+background-color: red;
+color: white;
 }
 
 #deleteBtn-El {
-  font-weight: bolder;
-  box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+font-weight: bolder;
+box-shadow: 0 13px 13px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
 
 
 /* Delete All Button-Removes all local storage entries*/
 #deleteBtn {
-  font-size: 18px;
-  margin-top: -5px;
+font-size: 18px;
+margin-top: -5px;
 }
 
 #deleteBtn:hover {
-  background-color: red;
+background-color: red;
 }
 
 #deleteBtnEl:hover {
-  background-color: red;
+background-color: red;
 }
 
 /* deleteBtn-EL CSS  END*/
 
 /* X image to delete child divs */
-#closeIcon {
-  margin-top: -2px;
-}
+/* #closeIcon {
+
+} */
 
 
 #closeIcon:hover {
-  box-shadow: 0 2px 2px 0 rgb(60 64 67 / 30%), 0 1px 1px 1px rgb(60 64 67 / 15%);
+box-shadow: 0 2px 2px 0 rgb(60 64 67 / 30%), 0 1px 1px 1px rgb(60 64 67 / 15%);
 }
 
 /* Copy button for each child div START*/
 #copyBtnEl {
-  font-size: 18px;
-  margin-top: -5px;
+font-size: 18px;
 }
 
 #copyBtnEl:hover {
-  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
 }
 /* Copy button for each child div END*/
 
 
 /* Class for the Child Div buttons  START */
 .resultSetBtn:hover {
-  background: #F6F9FE;
+background: #F6F9FE;
 }
 
 .resultSetBtn:active {
-  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-  outline: none;
+box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+outline: none;
 }
 
 .resultSetBtn:focus {
-  outline: none;
-  border: 2px solid #4285f4;
+outline: none;
+border: 2px solid #4285f4;
 }
 /* Class for the Child Div buttons  END */
 
 /* POP UP Element  START*/
 #popUp {
-  height: fit-content;
-  width: fit-content;
-  font-size: larger;
-  font-weight: bolder;
-  font-size: 20px;
-  margin-left: 115px;
-  color: white;
+height: fit-content;
+width: fit-content;
+font-size: larger;
+font-weight: bolder;
+font-size: 20px;
+margin-left: 115px;
+color: white;
 }
 /* POP UP Element  END*/
 
 /* CSS for the Link to carry you to Mailpac.com START */
 #siteLink {
-  /* margin-top:-5px; */
-  color: white;
-  padding:0px;
- border: 0px;
-  margin:0px;
-  display:block;
-  border-bottom: 1px solid #e5e5e5;
-  font-size:large;
-  font-family:'Times New Roman', Times, serif;
- 
+/* margin-top:-5px; */
+color: white;
+padding:0px;
+border: 0px;
+margin:0px;
+margin-top:-10px;
+border-bottom: 1px solid #e5e5e5;
+font-size:large;
+font-family:'Times New Roman', Times, serif;
+
 }
 
 
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
+.header{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  
+  gap: 0px;
 }
 
 /* Container for everything  START */
 .container {
-  width: 380px;
-  height: 90px
+width: 380px;
+height: fit-content;
+
 }
 
 
 .container-narrow>hr {
-  margin: 30px 0;
+margin: 30px 0;
 }
 
 /* Container for everything  END */
@@ -215,69 +231,69 @@ body {
 
 /* STYLED BUTTONS */
 .button-17 {
-  padding-top: 10px;
-  opacity: .9;
-  align-items: center;
-  appearance: none;
-  background-color: #fff;
-  border-radius: 24px;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-  box-sizing: border-box;
-  color: #3c4043;
-  display: inline-flex;
-  fill: currentcolor;
-  font-size: 14px;
-  height: 48px;
-  justify-content: center;
-  letter-spacing: .25px;
-  line-height: normal;
-  max-width: 100%;
-  overflow: visible;
-  padding: 20px 20px;
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: auto;
-  will-change: transform, opacity;
-  z-index: 0;
+padding-top: 10px;
+opacity: .9;
+align-items: center;
+appearance: none;
+background-color: #fff;
+border-radius: 24px;
+border-style: none;
+box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+box-sizing: border-box;
+color: #3c4043;
+display: inline-flex;
+fill: currentcolor;
+font-size: 14px;
+height: 48px;
+justify-content: center;
+letter-spacing: .25px;
+line-height: normal;
+max-width: 100%;
+overflow: visible;
+padding: 20px 20px;
+position: relative;
+text-align: center;
+text-transform: none;
+transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+width: auto;
+will-change: transform, opacity;
+z-index: 0;
 }
 
 .button-17:hover {
-  background: #F6F9FE;
-  color: #174ea6;
+background: #F6F9FE;
+color: #174ea6;
 }
 
 .button-17:active {
-  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-  outline: none;
+box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+outline: none;
 }
 
 .button-17:focus {
-  outline: none;
-  border: 2px solid #4285f4;
+outline: none;
+border: 2px solid #4285f4;
 }
 
 .button-17:not(:disabled) {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 .button-17:not(:disabled):hover {
-  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
 
 .button-17:not(:disabled):focus {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 .button-17:not(:disabled):active {
-  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
 
 .button-17:disabled {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
